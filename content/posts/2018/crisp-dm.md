@@ -5,6 +5,7 @@ Category: Aprendizaje automático
 Tags: CRISP-DM, Aprendizaje automático, Python, Rapidminer, Minería de datos, Inteligencia artificial, Programación
 Slug: crisp-dm
 Summary: El proceso CRISP-DM, es un modelo estándar abierto que describe un enfoque para problemas en el contexto de "data mining". Es uno de los más usados. Este post contiene ejemplos de aprendizaje automático ordenados según una implementación del modelo CRISP-DM.
+JS: tocConverter.js (bottom)
 Status: published
 
 [TOC]
@@ -12,13 +13,13 @@ Status: published
 ## CRISP-DM
 ---
 <small><a href="https://inseaddataanalytics.github.io/INSEADAnalytics/CRISP_DM.pdf">CRISP-DM 2.0</a></small>
-<div style="text-align:center"><img src="{filename}/images/crisp-dm-1.png" alt="drawing" width="35%" height="35%"/></div>
+<div style="text-align:center"><img src="{filename}/images/crisp-dm-1.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 El proceso CRISP-DM, es un modelo estándar abierto que describe un enfoque para problemas en el contexto de "data mining". Es uno de los más usados. 
 Este post contiene ejemplos de aprendizaje automático ordenados según una implementación del modelo CRISP-DM.
 El objetivo es mostrar como es el proceso, y en cada parte del proceso mostrar ejemplos que aplican a dicha parte.
 
-## 1 - Entendimiento del negocio
+## Entendimiento del negocio
 ---
 
 ### Ejemplos
@@ -29,7 +30,7 @@ El objetivo es mostrar como es el proceso, y en cada parte del proceso mostrar e
 - [ÁNALISIS DE LAS SOLICITUDES MEDICAS URUGUAY 2016 - RAPIDMINER]
 - [VOY PRESO O NO? ANÁLISIS DEL DATASET PENAL 2016 URUGUAY - PYTHON]
 
-## 2- Entendimiento de los datos
+## Entendimiento de los datos
 ---
 
 ### Ejemplos

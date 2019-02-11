@@ -40,7 +40,7 @@ EXTRA_PATH_METADATA = {
 }
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-bootstrapify', 'ipynb.markup']
+PLUGINS = ['pelican-bootstrapify', 'ipynb.markup', 'pelican-js']
 
 BOOTSTRAPIFY = {
     'table': ['table', 'table-striped', 'table-hover'],
@@ -77,7 +77,7 @@ HIDE_AUTHORS = True
 MARKDOWN = {
 	'extension_configs': {
 		'markdown.extensions.toc': {
-		  'title': 'Tabla de contenido:' 
+		  'title': 'Tabla de contenido:',
 		},
 		'markdown.extensions.codehilite': {'css_class': 'highlight'},
 		'markdown.extensions.extra': {},
