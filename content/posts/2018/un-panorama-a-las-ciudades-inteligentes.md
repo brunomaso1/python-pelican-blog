@@ -5,6 +5,7 @@ Category: Ciudades Inteligentes
 Tags: Smart Cities, Ciudades Inteligentes, Offtopic
 Slug: un-panorama-a-las-ciudades-inteligentes
 Summary: Las ciudades se están volviendo cada vez más inteligentes, pero ¿Cuál es el panorama actual sobre las Smart Cities?.
+JS: tocConverter.js (bottom)
 
 [TOC]
 
