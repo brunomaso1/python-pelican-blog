@@ -1,0 +1,2 @@
+// Convierte un elemento "toc" que tiene una lista desordenada a ordenada.
+document.getElementsByClassName("toc")[0].children[1].outerHTML = document.getElementsByClassName("toc")[0].children[1].outerHTML.replace("ul>", "ol>")
