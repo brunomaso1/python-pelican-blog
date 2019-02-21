@@ -106,7 +106,7 @@ ICONS = [
 
 
 
-#PYGMENTS_STYLE = 'monokai'
+PYGMENTS_STYLE = 'monokai'
 RFG_FAVICONS = True
 
 # Default value is ['index', 'tags', 'categories', 'authors', 'archives']
@@ -114,3 +114,7 @@ DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'authors', 'archives', 'sitem
 SITEMAP_SAVE_AS = 'sitemap.xml'
 
 # Theme settings --------------------------------------------------------------
+
+IPYNB_SKIP_CSS = True
+IPYNB_FIX_CSS = True
+IGNORE_FILES = ['.ipynb_checkpoints']

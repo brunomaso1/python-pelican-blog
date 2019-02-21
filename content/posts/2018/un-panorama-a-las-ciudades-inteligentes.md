@@ -1,11 +1,12 @@
 Title: UNA PANORAMA A LAS CIUDADES INTELIGENTES
-Date: 2018-10-30 12:00
-Modified: 2018-10-30 12:00
+Date: 2018-09-20 12:00
+Modified: 2018-09-20 12:00
 Category: Ciudades Inteligentes
 Tags: Smart Cities, Ciudades Inteligentes, Offtopic
 Slug: un-panorama-a-las-ciudades-inteligentes
 Summary: Las ciudades se están volviendo cada vez más inteligentes, pero ¿Cuál es el panorama actual sobre las Smart Cities?.
 JS: tocConverter.js (bottom)
+Status: published
 
 [TOC]
 
