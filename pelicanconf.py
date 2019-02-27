@@ -40,7 +40,7 @@ EXTRA_PATH_METADATA = {
 }
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-bootstrapify', 'ipynb.markup', 'pelican-js']
+PLUGINS = ['pelican-bootstrapify', 'ipynb.markup', 'pelican_javascript']
 
 BOOTSTRAPIFY = {
     'table': ['table', 'table-striped', 'table-hover'],
@@ -104,9 +104,7 @@ ICONS = [
 	('twitter', 'https://twitter.com/brunomaso11'),
 ]
 
-
-
-#PYGMENTS_STYLE = 'monokai'
+PYGMENTS_STYLE = 'monokai'
 RFG_FAVICONS = True
 
 # Default value is ['index', 'tags', 'categories', 'authors', 'archives']

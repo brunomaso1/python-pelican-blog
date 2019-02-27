@@ -27,14 +27,12 @@
   {% include 'include/analytics.html' %}
   
   {% if article %}
-    {% if article.js %}
-        {% for script in article.js %}
-            {% if 'top' in script[-7:] %}
-                {{ script[:-5]|format(SITEURL) }}
-            {% endif %}
-        {% endfor %}
-    {% endif %}
-  {% endif %}
+	{% if article.stylesheets %}
+		{% for stylesheet in article.stylesheets %}
+			{{ stylesheet }}
+		{% endfor %}
+	{% endif %}
+  {% endif %}  
 </head>
 
 <body>
@@ -59,11 +57,9 @@
   </footer>
   
   {% if article %}
-    {% if article.js %}
-        {% for script in article.js %}
-            {% if 'bottom' in script[-7:] %}
-                {{ script[:-8]|format(SITEURL) }}
-            {% endif %}
+    {% if article.javascripts %}
+        {% for javascript in article.javascripts %}
+			{{ javascript }}
         {% endfor %}
     {% endif %}
   {% endif %}

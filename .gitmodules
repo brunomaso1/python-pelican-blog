@@ -4,6 +4,6 @@
 [submodule "plugins/pelican-bootstrapify"]
 	path = plugins/pelican-bootstrapify
 	url = https://github.com/ingwinlu/pelican-bootstrapify
-[submodule "plugins/pelican-js"]
-	path = plugins/pelican-js
-	url = https://notabug.org/jorgesumle/pelican-js
+[submodule "plugins/pelican_javascript"]
+	path = plugins/pelican_javascript
+	url = https://github.com/mortada/pelican_javascript

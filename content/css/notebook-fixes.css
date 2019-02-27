@@ -1,0 +1,13 @@
+/* Anula el margen de la TOC */
+.rendered_html * + ul {
+    margin-top: unset !important;
+}
+
+/* Anula el espacio que queda sobrando después de las tablas */
+div.output_subarea {
+	max-width: unset !important;
+}
+
+div.input_area {
+	background-color: #272822 !important;
+}

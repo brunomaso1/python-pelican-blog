@@ -5,4 +5,5 @@ Category: Ciencia de datos
 Tags: CRISP-DM, Aprendizaje automático, Python, Minería de datos, Inteligencia artificial, Programación, Iowa, Aprendizaje supervizado, S
 Slug: jupyter-notebook-crispdm-template
 Summary: En este análisis se genera un modelo lineal para predecir los precios de los hogares en Iowa.
-JS: notebook-fixes.js (bottom)
+JavaScripts: notebook-fixes.js, tables.js
+Stylesheets: notebook-fixes.css, tables.css

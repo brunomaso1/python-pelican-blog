@@ -34,6 +34,12 @@ function deleteNotebookPrompts(){
 	while (listaElementos.length > 0) {
 		listaElementos[0].parentNode.removeChild(listaElementos[0]);
 	}
+	
+	// Promts en general.
+	var listaElementos = document.getElementsByClassName("prompt");
+	while (listaElementos.length > 0) {
+		listaElementos[0].parentNode.removeChild(listaElementos[0]);
+	}
 };
 
 fixAnchorLinks();

@@ -5,4 +5,5 @@ Category: Ciencia de datos
 Tags: CRISP-DM, Aprendizaje automático, Python, Minería de datos, Inteligencia artificial, Programación, Iowa, Predición precios, Aprendizaje supervizado, Pandas, Scikitlearn, Seaborn, Pandas-Profiling, Linear Algorithms
 Slug: prediccion-precios-iowa
 Summary: Template de como debería ser un análisis de datos siguiendo la metodología CRISP-DM.
-JS: notebook-fixes.js (bottom)
+JavaScripts: notebook-fixes.js, tables.js
+Stylesheets: notebook-fixes.css, tables.css
