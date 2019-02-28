@@ -24,7 +24,7 @@
   <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
         href="https://brunomaso1.github.io/blog/feeds/all.atom.xml">
   <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
-        href="https://brunomaso1.github.io/blog/feeds/ciencia-de-datos.atom.xml">  
+        href="https://brunomaso1.github.io/blog/feeds/{slug}.atom.xml">  
   <meta name="description" content="En este análisis se genera un modelo lineal para predecir los precios de los hogares en Iowa.">
 
 
@@ -87,9 +87,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -168,12 +283,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -186,27 +309,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -402,7 +537,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -412,11 +549,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -664,6 +814,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -702,7 +855,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -824,6 +977,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -840,16 +997,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -865,6 +1030,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -915,8 +1085,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1055,8 +1232,7 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><h1>Tabla de contenido<span class="tocSkip"></span></h1></p>
 <div class="toc"><ul class="toc-item"><li><span><a data-toc-modified-id="1.-Entendimiento-del-negocio--1" href="#1.-Entendimiento-del-negocio-"><span class="toc-item-num">1  </span>1. Entendimiento del negocio <a class="anchor" id="1-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="1.1.-Contexto--1.1" href="#1.1.-Contexto-"><span class="toc-item-num">1.1  </span>1.1. Contexto <a class="anchor" id="1.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="1.2.-DataSet--1.2" href="#1.2.-DataSet-"><span class="toc-item-num">1.2  </span>1.2. DataSet <a class="anchor" id="1.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="1.3.-Objetivo--1.3" href="#1.3.-Objetivo-"><span class="toc-item-num">1.3  </span>1.3. Objetivo <a class="anchor" id="1.3-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="2.-Entendimiento-de-los-datos--2" href="#2.-Entendimiento-de-los-datos-"><span class="toc-item-num">2  </span>2. Entendimiento de los datos <a class="anchor" id="2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="2.1.-Atributos--2.1" href="#2.1.-Atributos-"><span class="toc-item-num">2.1  </span>2.1. Atributos <a class="anchor" id="2.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="2.2.-Análisis-de-los-atributos--2.2" href="#2.2.-Análisis-de-los-atributos-"><span class="toc-item-num">2.2  </span>2.2. Análisis de los atributos <a class="anchor" id="2.2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="2.2.1.-Importancia--2.2.1" href="#2.2.1.-Importancia-"><span class="toc-item-num">2.2.1  </span>2.2.1. Importancia <a class="anchor" id="2.2.1-bullet"></a></a></span></li></ul></li></ul></li><li><span><a data-toc-modified-id="3.-Preparación-de-los-datos--3" href="#3.-Preparación-de-los-datos-"><span class="toc-item-num">3  </span>3. Preparación de los datos <a class="anchor" id="3-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.1.-Importación-de-librerías--3.1" href="#3.1.-Importación-de-librerías-"><span class="toc-item-num">3.1  </span>3.1. Importación de librerías <a class="anchor" id="3.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.2.-Importación-de-los-datos--3.2" href="#3.2.-Importación-de-los-datos-"><span class="toc-item-num">3.2  </span>3.2. Importación de los datos <a class="anchor" id="3.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.3.-Visualización-de-los-datos--3.3" href="#3.3.-Visualización-de-los-datos-"><span class="toc-item-num">3.3  </span>3.3. Visualización de los datos <a class="anchor" id="3.3-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.3.1.-Pre-tratamiento-de-los-datos--3.3.1" href="#3.3.1.-Pre-tratamiento-de-los-datos-"><span class="toc-item-num">3.3.1  </span>3.3.1. Pre-tratamiento de los datos <a class="anchor" id="3.3.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.3.3.-Pandas-profiling--3.3.2" href="#3.3.3.-Pandas-profiling-"><span class="toc-item-num">3.3.2  </span>3.3.3. Pandas-profiling <a class="anchor" id="3.3.3-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="3.4.-Tratamiento-de-los-datos--3.4" href="#3.4.-Tratamiento-de-los-datos-"><span class="toc-item-num">3.4  </span>3.4. Tratamiento de los datos <a class="anchor" id="3.4-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.4.1.-Sanitizar-los-datos--3.4.1" href="#3.4.1.-Sanitizar-los-datos-"><span class="toc-item-num">3.4.1  </span>3.4.1. Sanitizar los datos <a class="anchor" id="3.4.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.2.-Tratamiento-datos-faltantes--3.4.2" href="#3.4.2.-Tratamiento-datos-faltantes-"><span class="toc-item-num">3.4.2  </span>3.4.2. Tratamiento datos faltantes <a class="anchor" id="3.4.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.3.-Tratamiento-de-outliers--3.4.3" href="#3.4.3.-Tratamiento-de-outliers-"><span class="toc-item-num">3.4.3  </span>3.4.3. Tratamiento de outliers <a class="anchor" id="3.4.3-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.4.-Correlación-de-atributos--3.4.4" href="#3.4.4.-Correlación-de-atributos-"><span class="toc-item-num">3.4.4  </span>3.4.4. Correlación de atributos <a class="anchor" id="3.4.4-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.5.-Feature-extraction--3.4.5" href="#3.4.5.-Feature-extraction-"><span class="toc-item-num">3.4.5  </span>3.4.5. Feature extraction <a class="anchor" id="3.4.5-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.6.-Transofrmaciones-de-los-datos--3.4.6" href="#3.4.6.-Transofrmaciones-de-los-datos-"><span class="toc-item-num">3.4.6  </span>3.4.6. Transofrmaciones de los datos <a class="anchor" id="3.4.7-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.7.-Dimension-reduction--3.4.7" href="#3.4.7.-Dimension-reduction-"><span class="toc-item-num">3.4.7  </span>3.4.7. Dimension reduction <a class="anchor" id="3.4.6-bullet"></a></a></span></li></ul></li></ul></li><li><span><a data-toc-modified-id="4.-Modelado--4" href="#4.-Modelado-"><span class="toc-item-num">4  </span>4. Modelado <a class="anchor" id="4-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="4.1.-Preparación-del-modelado--4.1" href="#4.1.-Preparación-del-modelado-"><span class="toc-item-num">4.1  </span>4.1. Preparación del modelado <a class="anchor" id="4.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.2.-Entrenamiento-de-los-modelos--4.2" href="#4.2.-Entrenamiento-de-los-modelos-"><span class="toc-item-num">4.2  </span>4.2. Entrenamiento de los modelos <a class="anchor" id="4.2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="4.2.1.-Linear-Regression--4.2.1" href="#4.2.1.-Linear-Regression-"><span class="toc-item-num">4.2.1  </span>4.2.1. Linear Regression <a class="anchor" id="4.2.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.2.2.-Linear-Regression,-L1-Regularisation--4.2.2" href="#4.2.2.-Linear-Regression,-L1-Regularisation-"><span class="toc-item-num">4.2.2  </span>4.2.2. Linear Regression, L1 Regularisation <a class="anchor" id="4.2.2-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="4.3.-Comparación-de-modelos--4.3" href="#4.3.-Comparación-de-modelos-"><span class="toc-item-num">4.3  </span>4.3. Comparación de modelos <a class="anchor" id="4.3-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.4.-Feature-selection--4.4" href="#4.4.-Feature-selection-"><span class="toc-item-num">4.4  </span>4.4. Feature selection <a class="anchor" id="4.4-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.5.-Optimización--4.5" href="#4.5.-Optimización-"><span class="toc-item-num">4.5  </span>4.5. Optimización <a class="anchor" id="4.5-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="5.-Evaluación--5" href="#5.-Evaluación-"><span class="toc-item-num">5  </span>5. Evaluación <a class="anchor" id="5-bullet"></a></a></span></li><li><span><a data-toc-modified-id="6.-Puesta-en-producción--6" href="#6.-Puesta-en-producción-"><span class="toc-item-num">6  </span>6. Puesta en producción <a class="anchor" id="6-bullet"></a></a></span></li></ul></div>
@@ -1064,32 +1240,29 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Entendimiento-del-negocio-">1. Entendimiento del negocio <a class="anchor" id="1-bullet"></a><a class="anchor-link" href="#1.-Entendimiento-del-negocio-">¶</a></h2><hr/>
 <p>&lt;/center&gt;<small><a href="link">Lugar de descripción del problema</a></small>&lt;/center&gt;</p>
 <ul>
 <li>Texto descriptivo del negocio.</li>
 </ul>
-<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="ImagenLinda.png" width="100%"/></div><br/></p>
+<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="https://brunomaso1.github.io/blog/images/ImagenLinda.png" width="100%"/></div><br/></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="1.1.-Contexto-">1.1. Contexto <a class="anchor" id="1.1-bullet"></a><a class="anchor-link" href="#1.1.-Contexto-">¶</a></h3><ul>
 <li>Descripción del problema.</li>
 </ul>
-<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="ImagenLinda.png" width="100%"/></div>&lt;br/</p>
+<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="https://brunomaso1.github.io/blog/images/ImagenLinda.png" width="100%"/></div>&lt;br/</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="1.2.-DataSet-">1.2. DataSet <a class="anchor" id="1.2-bullet"></a><a class="anchor-link" href="#1.2.-DataSet-">¶</a></h3><ul>
 <li>Descripción del Dataset.</li>
@@ -1098,8 +1271,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="1.3.-Objetivo-">1.3. Objetivo <a class="anchor" id="1.3-bullet"></a><a class="anchor-link" href="#1.3.-Objetivo-">¶</a></h3><ul>
 <li>Objetivo a resolver en este problema.</li>
@@ -1108,8 +1280,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Entendimiento-de-los-datos-">2. Entendimiento de los datos <a class="anchor" id="2-bullet"></a><a class="anchor-link" href="#2.-Entendimiento-de-los-datos-">¶</a></h2><hr/>
 <p>Antes de comenzar con el análisis y modelado de la solución del problema, debemos entender que explican los atributos.
@@ -1118,8 +1289,7 @@ En este punto se comprenden los atributos y se analiza su importancia para el pr
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.1.-Atributos-">2.1. Atributos <a class="anchor" id="2.1-bullet"></a><a class="anchor-link" href="#2.1.-Atributos-">¶</a></h3><ul>
 <li>Descripción de los atributos.</li>
@@ -1128,16 +1298,14 @@ En este punto se comprenden los atributos y se analiza su importancia para el pr
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.2.-Análisis-de-los-atributos-">2.2. Análisis de los atributos <a class="anchor" id="2.2-bullet"></a><a class="anchor-link" href="#2.2.-Análisis-de-los-atributos-">¶</a></h3><p>En esta sección se hace un análisis previo de los atributos.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="2.2.1.-Importancia-">2.2.1. Importancia <a class="anchor" id="2.2.1-bullet"></a><a class="anchor-link" href="#2.2.1.-Importancia-">¶</a></h4><p>La importancia de los atributos con respecto al contexto es muy importante, ya que atributos que no tienen importancia dado el contexto, pueden afectar la predicción final.</p>
 <ul>
@@ -1147,8 +1315,7 @@ En este punto se comprenden los atributos y se analiza su importancia para el pr
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.-Preparación-de-los-datos-">3. Preparación de los datos <a class="anchor" id="3-bullet"></a><a class="anchor-link" href="#3.-Preparación-de-los-datos-">¶</a></h2><p>En esta sección se preparan los datos para ser utilizados por varios modelos. Se tiene en cuenta las restricciones de los modelos, por lo que se pueden preparar varios conjuntos para distintos modelos.</p>
 <ul>
@@ -1169,8 +1336,7 @@ Requerimientos de los atributos para la regresión lineal:</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="3.1.-Importación-de-librerías-">3.1. Importación de librerías <a class="anchor" id="3.1-bullet"></a><a class="anchor-link" href="#3.1.-Importación-de-librerías-">¶</a></h3><p>Las librerías a utilizar son las siguientes:</p>
 <ul>
@@ -1188,7 +1354,7 @@ Requerimientos de los atributos para la regresión lineal:</p>
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
 
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -1294,8 +1460,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="3.2.-Importación-de-los-datos-">3.2. Importación de los datos <a class="anchor" id="3.2-bullet"></a><a class="anchor-link" href="#3.2.-Importación-de-los-datos-">¶</a></h3><p>Para importar los datos utilizamos Pandas (<code>pd.read_csv()</code>), con los cual los cargamos en la estructura de datos <strong>Dataframe</strong> de Pandas. En este punto también se realiza los joins necesarios para obtener un conjunto con el que trabajar.</p>
 </div>
@@ -1306,7 +1471,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Datos de entrenamiento.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Datos de entrenamiento.</span>
 <span class="n">training</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"datasettraining.csv"</span><span class="p">)</span>
 
 <span class="c1"># Datos para testing.</span>
@@ -1376,8 +1541,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="3.3.-Visualización-de-los-datos-">3.3. Visualización de los datos <a class="anchor" id="3.3-bullet"></a><a class="anchor-link" href="#3.3.-Visualización-de-los-datos-">¶</a></h3><p>Para visualizar los datos podemos utilizar varias de las funciones de Pandas, como lo son:</p>
 <ul>
@@ -1393,7 +1557,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los primeros 5 datos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los primeros 5 datos.</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1422,7 +1586,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver una muestra aleatoria de 5.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Ver una muestra aleatoria de 5.</span>
 <span class="n">data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1434,7 +1598,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los atributos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los atributos.</span>
 <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1442,8 +1606,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.3.1.-Pre-tratamiento-de-los-datos-">3.3.1. Pre-tratamiento de los datos <a class="anchor" id="3.3.1-bullet"></a><a class="anchor-link" href="#3.3.1.-Pre-tratamiento-de-los-datos-">¶</a></h4>
 </div>
@@ -1454,7 +1617,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtenemos el Id de los datos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Obtenemos el Id de los datos.</span>
 <span class="n">testID</span> <span class="o">=</span> <span class="n">testing</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">]</span>
 
 <span class="c1"># Creamos un conjunto data que tiene ambos conjuntos, para así realizar las transformaciones a ambos también.</span>
@@ -1472,15 +1635,14 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### 3.3.2. Información estadística de los datos &lt;a class="anchor" id="3.3.2-bullet"&gt;&lt;/a&gt;</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#### 3.3.2. Información estadística de los datos &lt;a class="anchor" id="3.3.2-bullet"&gt;&lt;/a&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Podemos ver información sobre el conjunto utilizando <code>pd.dataframe.info()</code></p>
 </div>
@@ -1491,7 +1653,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Todos los datos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Todos los datos.</span>
 <span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1503,7 +1665,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Conjunto de testing.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Conjunto de testing.</span>
 <span class="n">testing</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1511,8 +1673,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Esta función nos muestra los tipos de datos (enteros, reales, nominales, etc.) y también la cantidad de elementos que tiene el conjunto, así como también cuantos elementos tiene cada atributo.</p>
 <p>Como resultado podemos ver que se tienen:</p>
@@ -1525,8 +1686,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Podemos visualizar las estadísticas de los datos con la funcionalidad <code>pd.dataframe.describe()</code> de Pandas.</p>
 </div>
@@ -1537,7 +1697,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver estadísticas simples de los datos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Ver estadísticas simples de los datos.</span>
 <span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1545,8 +1705,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.3.3.-Pandas-profiling-">3.3.3. Pandas-profiling <a class="anchor" id="3.3.3-bullet"></a><a class="anchor-link" href="#3.3.3.-Pandas-profiling-">¶</a></h4>
 </div>
@@ -1557,7 +1716,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generar resumen y mostrar.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Generar resumen y mostrar.</span>
 <span class="n">pandas_profiling</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">training</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1565,72 +1724,63 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="3.4.-Tratamiento-de-los-datos-">3.4. Tratamiento de los datos <a class="anchor" id="3.4-bullet"></a><a class="anchor-link" href="#3.4.-Tratamiento-de-los-datos-">¶</a></h3><p>En este punto se realizan las transformaciones de los datos que se adecuan a los modelos a utilizar.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.1.-Sanitizar-los-datos-">3.4.1. Sanitizar los datos <a class="anchor" id="3.4.1-bullet"></a><a class="anchor-link" href="#3.4.1.-Sanitizar-los-datos-">¶</a></h4><p>La sanitización de los datos se utiliza ya que pueden haber instancias que estén mal, en relación al tipo de dato. Este análisis es más a nivel de negocio que de dato, ya que el negocio implica reglas que los datos deben cumplir.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.2.-Tratamiento-datos-faltantes-">3.4.2. Tratamiento datos faltantes <a class="anchor" id="3.4.2-bullet"></a><a class="anchor-link" href="#3.4.2.-Tratamiento-datos-faltantes-">¶</a></h4><p>Los datos faltantes son inadmitibles para muchos modelos. El tratamiento de los datos faltantes implica imputar un valor, eliminar dichos datos o eliminar el atributo.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.3.-Tratamiento-de-outliers-">3.4.3. Tratamiento de outliers <a class="anchor" id="3.4.3-bullet"></a><a class="anchor-link" href="#3.4.3.-Tratamiento-de-outliers-">¶</a></h4><p>Hay muchos modelos en los cuales los outliers reducen la performance o inducen un sesgo indeseado. Por eso, se debe detectar y tratar los outliers para evitar este tipo de problemas.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.4.-Correlación-de-atributos-">3.4.4. Correlación de atributos <a class="anchor" id="3.4.4-bullet"></a><a class="anchor-link" href="#3.4.4.-Correlación-de-atributos-">¶</a></h4><p>Hay muchos (como los modelos lineales) que la correlación de los atributos influye fuertemente en los modelos. Es por esto, que muchas veces se debe chequear la correlación de los atributos para así eliminar los que están altamente correlacionados.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.5.-Feature-extraction-">3.4.5. Feature extraction <a class="anchor" id="3.4.5-bullet"></a><a class="anchor-link" href="#3.4.5.-Feature-extraction-">¶</a></h4><p>Muchas veces se puede "diseñar" un atributo que es combinación de otros atributos (lineal o no lineal) para así obtener más información. Tal vez, este atrubto generado es un mejor predictor y se mejora la solución.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.6.-Transofrmaciones-de-los-datos-">3.4.6. Transofrmaciones de los datos <a class="anchor" id="3.4.7-bullet"></a><a class="anchor-link" href="#3.4.6.-Transofrmaciones-de-los-datos-">¶</a></h4><p>En este punto se realizan las transofrmaciones necesarias de los datos. Las transformaciones incluyen desde transformaciones para reducir el sesgo o ajustar distribuciones de los datos hasta transformar los datos a valores numericos o a valores categóricos. También en este punto se incluye la estandarización y normalización si se debe hacer.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="3.4.7.-Dimension-reduction-">3.4.7. Dimension reduction <a class="anchor" id="3.4.6-bullet"></a><a class="anchor-link" href="#3.4.7.-Dimension-reduction-">¶</a></h4><p>Si las dimensiones son muy grantes, podemos aplicar técnicas que reduzcan la dimensionalidad de los atributos.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="4.-Modelado-">4. Modelado <a class="anchor" id="4-bullet"></a><a class="anchor-link" href="#4.-Modelado-">¶</a></h2><hr/>
 <p>En esta sección probamos varios modelos de machine learning. Utilizamos la librería <strong>sklearn</strong>.</p>
@@ -1647,7 +1797,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Modelos a utilizar:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Modelos a utilizar:</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LassoCV</span>
 </pre></div>
@@ -1656,8 +1806,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Y para chequear la performance de nuestros modelos utilizamos:</p>
 <ul>
@@ -1673,7 +1822,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">accuracy_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 </pre></div>
 </div>
@@ -1681,8 +1830,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Utilizaremos <code>sklearn.model_selection.GridSearchCV</code> (<a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html</a>) para la optimización del modelo basado en fuerza bruta o <code>sklearn-deap.evolutionary_search.EvolutionaryAlgorithmSearchCV</code> (<a href="https://github.com/rsteca/sklearn-deap">https://github.com/rsteca/sklearn-deap</a>) para la optimización del modelo basado en algoritmos evolutivos.</p>
 </div>
@@ -1693,7 +1841,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
 <span class="kn">from</span> <span class="nn">evolutionary_search</span> <span class="k">import</span> <span class="n">EvolutionaryAlgorithmSearchCV</span>
 </pre></div>
 </div>
@@ -1701,8 +1849,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Utilizaremos <code>sklearn.feature_selection.SelectFromModel</code> (<a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel">http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel</a>) para la optimización de los parámetros.</p>
 </div>
@@ -1713,15 +1860,14 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="k">import</span> <span class="n">SelectFromModel</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="k">import</span> <span class="n">SelectFromModel</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.1.-Preparación-del-modelado-">4.1. Preparación del modelado <a class="anchor" id="4.1-bullet"></a><a class="anchor-link" href="#4.1.-Preparación-del-modelado-">¶</a></h3><p>Los conjuntos a utilizar en el modelado son:</p>
 </div>
@@ -1732,7 +1878,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'X_test:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'X_test:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'X_train:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'y_train:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
 </pre></div>
@@ -1741,16 +1887,14 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.2.-Entrenamiento-de-los-modelos-">4.2. Entrenamiento de los modelos <a class="anchor" id="4.2-bullet"></a><a class="anchor-link" href="#4.2.-Entrenamiento-de-los-modelos-">¶</a></h3><p>En esta sección se entrenan los modelos especificados anteriormente para ver cuál es el que realiza la mejor predicción.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="4.2.1.-Linear-Regression-">4.2.1. Linear Regression <a class="anchor" id="4.2.1-bullet"></a><a class="anchor-link" href="#4.2.1.-Linear-Regression-">¶</a></h4>
 </div>
@@ -1761,7 +1905,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
 <span class="n">linreg_clf</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># Entrenamos el modelo.</span>
@@ -1776,8 +1920,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="4.2.2.-Linear-Regression,-L1-Regularisation-">4.2.2. Linear Regression, L1 Regularisation <a class="anchor" id="4.2.2-bullet"></a><a class="anchor-link" href="#4.2.2.-Linear-Regression,-L1-Regularisation-">¶</a></h4>
 </div>
@@ -1788,7 +1931,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
 <span class="n">linl1_clf</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">()</span>
 
 <span class="c1"># Entrenamos el modelo.</span>
@@ -1803,8 +1946,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.3.-Comparación-de-modelos-">4.3. Comparación de modelos <a class="anchor" id="4.3-bullet"></a><a class="anchor-link" href="#4.3.-Comparación-de-modelos-">¶</a></h3><p>Una vez que tenemos las precisiones de los modelos, podemos comparar las performance de los modelos.</p>
 </div>
@@ -1815,7 +1957,7 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creamos un dataframe para mostrar los datos.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Creamos un dataframe para mostrar los datos.</span>
 <span class="n">model_performance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
     <span class="s2">"Model"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Linear Regression"</span><span class="p">,</span> <span class="s2">"Linear Regression L1"</span><span class="p">],</span>
     <span class="s2">"Accuracy"</span><span class="p">:</span> <span class="p">[</span><span class="n">acc_linreg</span><span class="p">,</span> <span class="n">acc_linl1</span><span class="p">]</span>
@@ -1829,32 +1971,28 @@ The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.4.-Feature-selection-">4.4. Feature selection <a class="anchor" id="4.4-bullet"></a><a class="anchor-link" href="#4.4.-Feature-selection-">¶</a></h3><p>Una vez que tenemos el modelo que nos de la mejor predición, realizamos la selección de atributos utilizando algoritmos evolutivos para observar si se mejora en la predicción o no. En si, esto se debería realizar para cada algoritmo, y luego compararlos, pero consume mucho tiempo este tipo de procesos.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.5.-Optimización-">4.5. Optimización <a class="anchor" id="4.5-bullet"></a><a class="anchor-link" href="#4.5.-Optimización-">¶</a></h3><p>En esta sección se optimiza el modelo para utilizarlo en la puesta a producción.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="5.-Evaluación-">5. Evaluación <a class="anchor" id="5-bullet"></a><a class="anchor-link" href="#5.-Evaluación-">¶</a></h2><hr/>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="6.-Puesta-en-producción-">6. Puesta en producción <a class="anchor" id="6-bullet"></a><a class="anchor-link" href="#6.-Puesta-en-producción-">¶</a></h2><hr/>
 </div>
