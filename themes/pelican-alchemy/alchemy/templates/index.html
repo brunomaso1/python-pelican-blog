@@ -12,7 +12,25 @@
 {% endblock %}
 
 {% block page_header %}
-  Articulos
+	<div class="row">
+		<div class="col-md-4">
+			Artículos 
+		</div>
+		<div class="col-md-8">
+			<script>
+				(function() {
+					var cx = '014749474853703875106:r_uu6wc0xua';
+					var gcse = document.createElement('script');
+					gcse.type = 'text/javascript';
+					gcse.async = true;
+					gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+					var s = document.getElementsByTagName('script')[0];
+					s.parentNode.insertBefore(gcse, s);
+				})();
+			</script>
+			<gcse:search></gcse:search>
+		</div>
+	</div>  
 {% endblock %}
 
 {% block content %}

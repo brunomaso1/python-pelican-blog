@@ -1,0 +1,9 @@
+Title: VOY PRESO O NO? ANÁLISIS DEL DATASET PENAL 2016 URUGUAY
+Date: 2018-12-15 12:00
+Modified: 2018-12-15 12:00
+Category: Ciencia de datos
+Tags: CRISP-DM, Aprendizaje automático, Python, Minería de datos, Inteligencia artificial, Programación, Penal2016, Uruguay, Aprendizaje supervisado, Pandas, Scikitlearn, Seaborn, Pandas-Profiling
+Slug: analisis-penal2016
+Summary: Análisis de los datos del dataset Penal 2016, obtenido de los datos abiertos del gobierno uruguayo.
+JavaScripts: notebook-fixes.js, tables.js
+Stylesheets: notebook-fixes.css, tables.css

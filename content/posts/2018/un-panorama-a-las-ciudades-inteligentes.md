@@ -5,7 +5,7 @@ Category: Ciudades Inteligentes
 Tags: Smart Cities, Ciudades Inteligentes, Offtopic
 Slug: un-panorama-a-las-ciudades-inteligentes
 Summary: Las ciudades se están volviendo cada vez más inteligentes, pero ¿Cuál es el panorama actual sobre las Smart Cities?.
-JS: tocConverter.js (bottom)
+JavaScripts: tocConverter.js
 Status: published
 
 [TOC]
@@ -45,7 +45,7 @@ TVP[^17] es la sigla de “El Proyecto Venus” (The Venus Project, en inglés).
 
 Podría decirse que la ideología del TVP no es totalmente concreta aún, y que en este momento es solamente una forma de mostrar un mundo futurístico de una economía óptima y políticas a escalas mundiales. Sin embargo, se están realizando proyectos para cambiar esa visión sobre el sentido utópico de los diseños[^21]. Más allá del futurismo, hoy en día tenemos la tecnología necesaria para crear una Smart City realmente sostenible. Un ejemplo de ello es lo que está haciendo Google en Canadá.
 
-## TORONTO
+## Toronto
 
 <div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-5.png" alt="drawing" width="35%" height="35%"/></div></br>
 
@@ -59,7 +59,7 @@ Por supuesto que hay muchos problemas de privacidad, en una ciudad que lo “ve�
 
 Sidewalk Labs Toronto es el primer intento de realmente diseñar e implementar una Smart City. Es una línea a seguir para ver si realmente tenemos la habilidad necesaria para construir una Smart City hoy en día. Tal vez, este proyecto abre otras líneas de implementación, incluyendo algunas relacionadas al TVP, que nos permitan mejorar como sociedad y personas.
 
-## NOTAS FINALES
+## Notas finales
 
 En este informe se mostró conceptos futuristas y utópicos sobre el diseño e implementación de Smart Cities, se partió de un enfoque top-down, mostrando predicciones dentro de 30, 20 y 10 años. Luego se menciona un proyecto actual que se espera que sea una línea a seguir en los próximos años. Finalmente, se intentó quebrar un poco los conceptos utópicos incluyendo un claro ejemplo de que dichos esbozos no son tan futuristas y utópicos, mediante Sidewalk Labs.
 

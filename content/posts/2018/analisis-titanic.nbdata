@@ -1,0 +1,10 @@
+Title: ANÁLISIS DEL CONJUNTO DE DATOS TITANIC
+Date: 2018-10-15 12:00
+Modified: 2018-10-15 12:00
+Category: Ciencia de datos
+Tags: CRISP-DM, Aprendizaje automático, Python, Minería de datos, Inteligencia artificial, Programación, Titanic, Aprendizaje supervisado, Pandas, Scikitlearn, Seaborn, Pandas-Profiling
+Slug: analisis-titanic
+Summary: Análisis de los datos del Titanic para luego ser procesados por un modelo de ML.
+JavaScripts: notebook-fixes.js, tables.js
+Stylesheets: notebook-fixes.css, tables.css
+Status: published

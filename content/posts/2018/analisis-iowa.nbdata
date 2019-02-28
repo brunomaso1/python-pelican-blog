@@ -1,0 +1,10 @@
+Title: PREDICCIÓN DE PRECIOS DE CASAS EN LA REGIÓN DE IOWA
+Date: 2018-09-15 12:00
+Modified: 2018-09-15 12:00
+Category: Ciencia de datos
+Tags: CRISP-DM, Aprendizaje automático, Python, Minería de datos, Inteligencia artificial, Programación, Iowa, Predición precios, Aprendizaje supervisado, Pandas, Scikitlearn, Seaborn, Pandas-Profiling, Linear Algorithms
+Slug: analisis-iowa
+Summary: Análisis de precios de propiedades sobre la región de Iowa. Luego de hecho el análisis, se construye un predictor sobre los datos.
+JavaScripts: notebook-fixes.js, tables.js
+Stylesheets: notebook-fixes.css, tables.css
+Status: published

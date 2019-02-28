@@ -25,7 +25,7 @@ ARTICLE_LANG_SAVE_AS = ARTICLE_LANG_URL
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['extras', 'images', 'pdfs']
+STATIC_PATHS = ['extras', 'images', 'pdfs', 'others']
 EXTRA_PATH_METADATA = {
     'extras/android-chrome-192x192.png': {'path': 'android-chrome-192x192.png'},
     'extras/android-chrome-512x512.png': {'path': 'android-chrome-512x512.png'},
@@ -40,7 +40,7 @@ EXTRA_PATH_METADATA = {
 }
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['pelican-bootstrapify', 'ipynb.markup', 'pelican_javascript']
+PLUGINS = ['pelican-bootstrapify', 'ipynb.markup', 'pelican_javascript', 'render_math']
 
 BOOTSTRAPIFY = {
     'table': ['table', 'table-striped', 'table-hover'],

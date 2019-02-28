@@ -5,8 +5,7 @@ Category: Aprendizaje automático
 Tags: CRISP-DM, Aprendizaje automático, Python, Rapidminer, Minería de datos, Inteligencia artificial, Programación
 Slug: crisp-dm
 Summary: El proceso CRISP-DM, es un modelo estándar abierto que describe un enfoque para problemas en el contexto de "data mining". Es uno de los más usados. Este post contiene ejemplos de aprendizaje automático ordenados según una implementación del modelo CRISP-DM.
-JS: tocConverter.js (bottom)
-Status: published
+JavaScripts: tocConverter.js
 
 [TOC]
 
