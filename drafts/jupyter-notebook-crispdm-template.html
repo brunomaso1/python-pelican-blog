@@ -1,0 +1,1934 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>  JUPYTER NOTEBOOK CRISPDM TEMPLATE | Descubriendo el mundo tecnológico
+</title>
+  <link rel="canonical" href="https://brunomaso1.github.io/blog/drafts/jupyter-notebook-crispdm-template.html">
+
+    <link rel="apple-touch-icon" href="https://brunomaso1.github.io/blog/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="https://brunomaso1.github.io/blog/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://brunomaso1.github.io/blog/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://brunomaso1.github.io/blog/manifest.json">
+    <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/pygments/monokai.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/theme.css">
+
+  <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
+        href="https://brunomaso1.github.io/blog/feeds/all.atom.xml">
+  <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
+        href="https://brunomaso1.github.io/blog/feeds/ciencia-de-datos.atom.xml">  
+  <meta name="description" content="En este análisis se genera un modelo lineal para predecir los precios de los hogares en Iowa.">
+
+
+  
+			<link rel="stylesheet" href="https://brunomaso1.github.io/blog/css/notebook-fixes.css" type="text/css" />
+			<link rel="stylesheet" href="https://brunomaso1.github.io/blog/css/tables.css" type="text/css" />
+  
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+    <div class="col-sm-4">
+      <a href="https://brunomaso1.github.io/blog/">
+        <img class="img-fluid rounded" src=https://brunomaso1.github.io/blog/images/profile.jpg width=250 height=250 alt="Descubriendo el mundo tecnológico">
+      </a>
+    </div>
+  <div class="col-sm-8 text-center">
+    <h1 class="title"><a href="https://brunomaso1.github.io/blog/">Descubriendo el mundo tecnológico</a></h1>
+      <p class="text-muted">Blog orientado a la discusión de tecnologías</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="/pages/crisp-dm.html" target="_blank">CRISP-DM</a></li>
+          <li class="list-inline-item"><a href="http://python.org/" target="_blank">Python.org</a></li>
+          <li class="list-inline-item"><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+          <li class="list-inline-item"><a class="fa fa-feed" href="https://brunomaso1.github.io/blog/feeds/all.atom.xml" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/brunomaso1" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-linkedin" href="https://www.linkedin.com/in/brunomaso1" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-twitter" href="https://twitter.com/brunomaso11" target="_blank"></a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  JUPYTER NOTEBOOK CRISPDM TEMPLATE
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2018-09-12T12:00:00-03:00">
+          <i class="fa fa-clock-o"></i>
+          mié 12 septiembre 2018
+        </li>
+        <li class="list-inline-item">
+          <i class="fa fa-folder-open-o"></i>
+          <a href="https://brunomaso1.github.io/blog/category/ciencia-de-datos.html">Ciencia de datos</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fa fa-files-o"></i>
+              <a href="https://brunomaso1.github.io/blog/tag/crisp-dm.html">#CRISP-DM</a>,               <a href="https://brunomaso1.github.io/blog/tag/aprendizaje-automatico.html">#Aprendizaje automático</a>,               <a href="https://brunomaso1.github.io/blog/tag/python.html">#Python</a>,               <a href="https://brunomaso1.github.io/blog/tag/mineria-de-datos.html">#Minería de datos</a>,               <a href="https://brunomaso1.github.io/blog/tag/inteligencia-artificial.html">#Inteligencia artificial</a>,               <a href="https://brunomaso1.github.io/blog/tag/programacion.html">#Programación</a>,               <a href="https://brunomaso1.github.io/blog/tag/iowa.html">#Iowa</a>,               <a href="https://brunomaso1.github.io/blog/tag/aprendizaje-supervizado.html">#Aprendizaje supervizado</a>,               <a href="https://brunomaso1.github.io/blog/tag/s.html">#S</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <style type="text/css">/*!
+*
+* IPython notebook
+*
+*/
+/* CSS font colors for translated ANSI colors. */
+.ansibold {
+  font-weight: bold;
+}
+/* use dark versions for foreground, to improve visibility */
+.ansiblack {
+  color: black;
+}
+.ansired {
+  color: darkred;
+}
+.ansigreen {
+  color: darkgreen;
+}
+.ansiyellow {
+  color: #c4a000;
+}
+.ansiblue {
+  color: darkblue;
+}
+.ansipurple {
+  color: darkviolet;
+}
+.ansicyan {
+  color: steelblue;
+}
+.ansigray {
+  color: gray;
+}
+/* and light for background, for the same reason */
+.ansibgblack {
+  background-color: black;
+}
+.ansibgred {
+  background-color: red;
+}
+.ansibggreen {
+  background-color: green;
+}
+.ansibgyellow {
+  background-color: yellow;
+}
+.ansibgblue {
+  background-color: blue;
+}
+.ansibgpurple {
+  background-color: magenta;
+}
+.ansibgcyan {
+  background-color: cyan;
+}
+.ansibggray {
+  background-color: gray;
+}
+div.cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-width: 1px;
+  border-style: solid;
+  border-color: transparent;
+  width: 100%;
+  padding: 5px;
+  /* This acts as a spacer between cells, that is outside the border */
+  margin: 0px;
+  outline: none;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+}
+div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
+  border-left-color: #E3F2FD;
+  border-left-width: 1px;
+  padding-left: 5px;
+  border-right-color: #E3F2FD;
+  border-right-width: 1px;
+  background: #E3F2FD;
+}
+@media print {
+  div.cell.jupyter-soft-selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected {
+  border-color: #ababab;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  div.cell.selected {
+    border-color: transparent;
+  }
+}
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
+.edit_mode div.cell.selected {
+  border-color: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+@media print {
+  .edit_mode div.cell.selected {
+    border-color: transparent;
+  }
+}
+.prompt {
+  /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+  min-width: 14ex;
+  /* This padding is tuned to match the padding on the CodeMirror editor. */
+  padding: 0.4em;
+  margin: 0px;
+  font-family: monospace;
+  text-align: right;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+  /* Don't highlight prompt number selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  /* Use default cursor */
+  cursor: default;
+}
+@media (max-width: 540px) {
+  .prompt {
+    text-align: left;
+  }
+}
+div.inner_cell {
+  min-width: 0;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+  background: #f7f7f7;
+  line-height: 1.21429em;
+}
+/* This is needed so that empty prompt areas can collapse to zero height when there
+   is no content in the output_subarea and the prompt. The main purpose of this is
+   to make sure that empty JavaScript output_subareas have no height. */
+div.prompt:empty {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+div.unrecognized_cell {
+  padding: 5px 5px 5px 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.unrecognized_cell .inner_cell {
+  border-radius: 2px;
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+  border: 1px solid #cfcfcf;
+  background: #eaeaea;
+}
+div.unrecognized_cell .inner_cell a {
+  color: inherit;
+  text-decoration: none;
+}
+div.unrecognized_cell .inner_cell a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+@media (max-width: 540px) {
+  div.unrecognized_cell > div.prompt {
+    display: none;
+  }
+}
+div.code_cell {
+  /* avoid page breaking on code cells when printing */
+}
+@media print {
+  div.code_cell {
+    page-break-inside: avoid;
+  }
+}
+/* any special styling for code cells that are currently running goes here */
+div.input {
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.input {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_prompt {
+  color: #303F9F;
+  border-top: 1px solid transparent;
+}
+div.input_area > div.highlight {
+  margin: 0.4em;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+div.input_area > div.highlight > pre {
+  margin: 0px;
+  border: none;
+  padding: 0px;
+  background-color: transparent;
+}
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font.
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+.CodeMirror {
+  line-height: 1.21429em;
+  /* Changed from 1em to our global default */
+  font-size: 14px;
+  height: auto;
+  /* Changed to auto to autogrow */
+  background: none;
+  /* Changed from white to allow our bg to show through */
+}
+.CodeMirror-scroll {
+  /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+  /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+.CodeMirror-lines {
+  /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
+  /* we have set a different line-height and want this to scale with that. */
+  padding: 0.4em;
+}
+.CodeMirror-linenumber {
+  padding: 0 8px 0 4px;
+}
+.CodeMirror-gutters {
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+}
+.CodeMirror pre {
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+}
+/*
+
+Original style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+Adapted from GitHub theme
+
+*/
+.highlight-base {
+  color: #000;
+}
+.highlight-variable {
+  color: #000;
+}
+.highlight-variable-2 {
+  color: #1a1a1a;
+}
+.highlight-variable-3 {
+  color: #333333;
+}
+.highlight-string {
+  color: #BA2121;
+}
+.highlight-comment {
+  color: #408080;
+  font-style: italic;
+}
+.highlight-number {
+  color: #080;
+}
+.highlight-atom {
+  color: #88F;
+}
+.highlight-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.highlight-builtin {
+  color: #008000;
+}
+.highlight-error {
+  color: #f00;
+}
+.highlight-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.highlight-meta {
+  color: #AA22FF;
+}
+/* previously not defined, copying from default codemirror */
+.highlight-def {
+  color: #00f;
+}
+.highlight-string-2 {
+  color: #f50;
+}
+.highlight-qualifier {
+  color: #555;
+}
+.highlight-bracket {
+  color: #997;
+}
+.highlight-tag {
+  color: #170;
+}
+.highlight-attribute {
+  color: #00c;
+}
+.highlight-header {
+  color: blue;
+}
+.highlight-quote {
+  color: #090;
+}
+.highlight-link {
+  color: #00c;
+}
+/* apply the same style to codemirror */
+.cm-s-ipython span.cm-keyword {
+  color: #008000;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-atom {
+  color: #88F;
+}
+.cm-s-ipython span.cm-number {
+  color: #080;
+}
+.cm-s-ipython span.cm-def {
+  color: #00f;
+}
+.cm-s-ipython span.cm-variable {
+  color: #000;
+}
+.cm-s-ipython span.cm-operator {
+  color: #AA22FF;
+  font-weight: bold;
+}
+.cm-s-ipython span.cm-variable-2 {
+  color: #1a1a1a;
+}
+.cm-s-ipython span.cm-variable-3 {
+  color: #333333;
+}
+.cm-s-ipython span.cm-comment {
+  color: #408080;
+  font-style: italic;
+}
+.cm-s-ipython span.cm-string {
+  color: #BA2121;
+}
+.cm-s-ipython span.cm-string-2 {
+  color: #f50;
+}
+.cm-s-ipython span.cm-meta {
+  color: #AA22FF;
+}
+.cm-s-ipython span.cm-qualifier {
+  color: #555;
+}
+.cm-s-ipython span.cm-builtin {
+  color: #008000;
+}
+.cm-s-ipython span.cm-bracket {
+  color: #997;
+}
+.cm-s-ipython span.cm-tag {
+  color: #170;
+}
+.cm-s-ipython span.cm-attribute {
+  color: #00c;
+}
+.cm-s-ipython span.cm-header {
+  color: blue;
+}
+.cm-s-ipython span.cm-quote {
+  color: #090;
+}
+.cm-s-ipython span.cm-link {
+  color: #00c;
+}
+.cm-s-ipython span.cm-error {
+  color: #f00;
+}
+.cm-s-ipython span.cm-tab {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAMCAYAAAAkuj5RAAAAAXNSR0IArs4c6QAAAGFJREFUSMft1LsRQFAQheHPowAKoACx3IgEKtaEHujDjORSgWTH/ZOdnZOcM/sgk/kFFWY0qV8foQwS4MKBCS3qR6ixBJvElOobYAtivseIE120FaowJPN75GMu8j/LfMwNjh4HUpwg4LUAAAAASUVORK5CYII=);
+  background-position: right;
+  background-repeat: no-repeat;
+}
+div.output_wrapper {
+  /* this position must be relative to enable descendents to be absolute within it */
+  position: relative;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  z-index: 1;
+}
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  overflow: auto;
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+}
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin: 0px;
+  padding: 0px;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px 0.4em;
+  position: absolute;
+  border-radius: 2px;
+}
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  -webkit-box-shadow: inset 0 0 1px #000;
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+div.output_prompt {
+  color: #D84315;
+}
+/* This class is the outer container of all output sections. */
+div.output_area {
+  padding: 0px;
+  page-break-inside: avoid;
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+div.output_area .MathJax_Display {
+  text-align: left !important;
+}
+div.output_area 
+div.output_area 
+div.output_area img,
+div.output_area svg {
+  max-width: 100%;
+  height: auto;
+}
+div.output_area img.unconfined,
+div.output_area svg.unconfined {
+  max-width: none;
+}
+/* This is needed to protect the pre formating from global settings such
+   as that of bootstrap */
+.output {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: vertical;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: vertical;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.output_area {
+    /* Old browsers */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-box-align: stretch;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    -moz-box-align: stretch;
+    display: box;
+    box-orient: vertical;
+    box-align: stretch;
+    /* Modern browsers */
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+div.output_area pre {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  color: black;
+  background-color: transparent;
+  border-radius: 0;
+}
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+  overflow-x: auto;
+  padding: 0.4em;
+  /* Old browsers */
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  /* Modern browsers */
+  flex: 1;
+  max-width: calc(100% - 14ex);
+}
+div.output_scroll div.output_subarea {
+  overflow-x: visible;
+}
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+/* all text output has this class: */
+div.output_text {
+  text-align: left;
+  color: #000;
+  /* This has to match that of the the CodeMirror class line-height below */
+  line-height: 1.21429em;
+}
+/* stdout/stderr are 'text' as well as 'stream', but execute_result/error are *not* streams */
+div.output_stderr {
+  background: #fdd;
+  /* very light red background for stderr */
+}
+div.output_latex {
+  text-align: left;
+}
+/* Empty output_javascript divs should have no height */
+div.output_javascript:empty {
+  padding: 0;
+}
+.js-error {
+  color: darkred;
+}
+/* raw_input styles */
+div.raw_input_container {
+  line-height: 1.21429em;
+  padding-top: 5px;
+}
+pre.raw_input_prompt {
+  /* nothing needed here. */
+}
+input.raw_input {
+  font-family: monospace;
+  font-size: inherit;
+  color: inherit;
+  width: auto;
+  /* make sure input baseline aligns with prompt */
+  vertical-align: baseline;
+  /* padding + margin = 0.5em between prompt and cursor */
+  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+input.raw_input:focus {
+  box-shadow: none;
+}
+p.p-space {
+  margin-bottom: 10px;
+}
+div.output_unrecognized {
+  padding: 5px;
+  font-weight: bold;
+  color: red;
+}
+div.output_unrecognized a {
+  color: inherit;
+  text-decoration: none;
+}
+div.output_unrecognized a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+.rendered_html {
+  color: #000;
+  /* any extras will just be numbers: */
+}
+
+
+
+.rendered_html :link {
+  text-decoration: underline;
+}
+.rendered_html :visited {
+  text-decoration: underline;
+}
+
+
+
+
+
+
+.rendered_html h1:first-child {
+  margin-top: 0.538em;
+}
+.rendered_html h2:first-child {
+  margin-top: 0.636em;
+}
+.rendered_html h3:first-child {
+  margin-top: 0.777em;
+}
+.rendered_html h4:first-child {
+  margin-top: 1em;
+}
+.rendered_html h5:first-child {
+  margin-top: 1em;
+}
+.rendered_html h6:first-child {
+  margin-top: 1em;
+}
+
+
+
+
+
+
+
+
+.rendered_html * + ul {
+  margin-top: 1em;
+}
+.rendered_html * + ol {
+  margin-top: 1em;
+}
+
+
+.rendered_html pre,
+
+
+
+.rendered_html tr,
+.rendered_html th,
+
+.rendered_html td,
+
+
+.rendered_html * + table {
+  margin-top: 1em;
+}
+
+.rendered_html * + p {
+  margin-top: 1em;
+}
+
+.rendered_html * + img {
+  margin-top: 1em;
+}
+.rendered_html img,
+
+.rendered_html img.unconfined,
+
+div.text_cell {
+  /* Old browsers */
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-align: stretch;
+  display: -moz-box;
+  -moz-box-orient: horizontal;
+  -moz-box-align: stretch;
+  display: box;
+  box-orient: horizontal;
+  box-align: stretch;
+  /* Modern browsers */
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+@media (max-width: 540px) {
+  div.text_cell > div.prompt {
+    display: none;
+  }
+}
+div.text_cell_render {
+  /*font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;*/
+  outline: none;
+  resize: none;
+  width: inherit;
+  border-style: none;
+  padding: 0.5em 0.5em 0.5em 0.4em;
+  color: #000;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+a.anchor-link:link {
+  text-decoration: none;
+  padding: 0px 20px;
+  visibility: hidden;
+}
+h1:hover .anchor-link,
+h2:hover .anchor-link,
+h3:hover .anchor-link,
+h4:hover .anchor-link,
+h5:hover .anchor-link,
+h6:hover .anchor-link {
+  visibility: visible;
+}
+.text_cell.rendered .input_area {
+  display: none;
+}
+.text_cell.rendered 
+.text_cell.unrendered .text_cell_render {
+  display: none;
+}
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6 {
+  font-weight: bold;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.cm-header-1 {
+  font-size: 185.7%;
+}
+.cm-header-2 {
+  font-size: 157.1%;
+}
+.cm-header-3 {
+  font-size: 128.6%;
+}
+.cm-header-4 {
+  font-size: 110%;
+}
+.cm-header-5 {
+  font-size: 100%;
+  font-style: italic;
+}
+.cm-header-6 {
+  font-size: 100%;
+  font-style: italic;
+}
+</style>
+<style type="text/css">.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */</style>
+<style type="text/css">
+/* Temporary definitions which will become obsolete with Notebook release 5.0 */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-bold { font-weight: bold; }
+</style>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><h1>Tabla de contenido<span class="tocSkip"></span></h1></p>
+<div class="toc"><ul class="toc-item"><li><span><a data-toc-modified-id="1.-Entendimiento-del-negocio--1" href="#1.-Entendimiento-del-negocio-"><span class="toc-item-num">1  </span>1. Entendimiento del negocio <a class="anchor" id="1-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="1.1.-Contexto--1.1" href="#1.1.-Contexto-"><span class="toc-item-num">1.1  </span>1.1. Contexto <a class="anchor" id="1.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="1.2.-DataSet--1.2" href="#1.2.-DataSet-"><span class="toc-item-num">1.2  </span>1.2. DataSet <a class="anchor" id="1.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="1.3.-Objetivo--1.3" href="#1.3.-Objetivo-"><span class="toc-item-num">1.3  </span>1.3. Objetivo <a class="anchor" id="1.3-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="2.-Entendimiento-de-los-datos--2" href="#2.-Entendimiento-de-los-datos-"><span class="toc-item-num">2  </span>2. Entendimiento de los datos <a class="anchor" id="2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="2.1.-Atributos--2.1" href="#2.1.-Atributos-"><span class="toc-item-num">2.1  </span>2.1. Atributos <a class="anchor" id="2.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="2.2.-Análisis-de-los-atributos--2.2" href="#2.2.-Análisis-de-los-atributos-"><span class="toc-item-num">2.2  </span>2.2. Análisis de los atributos <a class="anchor" id="2.2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="2.2.1.-Importancia--2.2.1" href="#2.2.1.-Importancia-"><span class="toc-item-num">2.2.1  </span>2.2.1. Importancia <a class="anchor" id="2.2.1-bullet"></a></a></span></li></ul></li></ul></li><li><span><a data-toc-modified-id="3.-Preparación-de-los-datos--3" href="#3.-Preparación-de-los-datos-"><span class="toc-item-num">3  </span>3. Preparación de los datos <a class="anchor" id="3-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.1.-Importación-de-librerías--3.1" href="#3.1.-Importación-de-librerías-"><span class="toc-item-num">3.1  </span>3.1. Importación de librerías <a class="anchor" id="3.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.2.-Importación-de-los-datos--3.2" href="#3.2.-Importación-de-los-datos-"><span class="toc-item-num">3.2  </span>3.2. Importación de los datos <a class="anchor" id="3.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.3.-Visualización-de-los-datos--3.3" href="#3.3.-Visualización-de-los-datos-"><span class="toc-item-num">3.3  </span>3.3. Visualización de los datos <a class="anchor" id="3.3-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.3.1.-Pre-tratamiento-de-los-datos--3.3.1" href="#3.3.1.-Pre-tratamiento-de-los-datos-"><span class="toc-item-num">3.3.1  </span>3.3.1. Pre-tratamiento de los datos <a class="anchor" id="3.3.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.3.3.-Pandas-profiling--3.3.2" href="#3.3.3.-Pandas-profiling-"><span class="toc-item-num">3.3.2  </span>3.3.3. Pandas-profiling <a class="anchor" id="3.3.3-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="3.4.-Tratamiento-de-los-datos--3.4" href="#3.4.-Tratamiento-de-los-datos-"><span class="toc-item-num">3.4  </span>3.4. Tratamiento de los datos <a class="anchor" id="3.4-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="3.4.1.-Sanitizar-los-datos--3.4.1" href="#3.4.1.-Sanitizar-los-datos-"><span class="toc-item-num">3.4.1  </span>3.4.1. Sanitizar los datos <a class="anchor" id="3.4.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.2.-Tratamiento-datos-faltantes--3.4.2" href="#3.4.2.-Tratamiento-datos-faltantes-"><span class="toc-item-num">3.4.2  </span>3.4.2. Tratamiento datos faltantes <a class="anchor" id="3.4.2-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.3.-Tratamiento-de-outliers--3.4.3" href="#3.4.3.-Tratamiento-de-outliers-"><span class="toc-item-num">3.4.3  </span>3.4.3. Tratamiento de outliers <a class="anchor" id="3.4.3-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.4.-Correlación-de-atributos--3.4.4" href="#3.4.4.-Correlación-de-atributos-"><span class="toc-item-num">3.4.4  </span>3.4.4. Correlación de atributos <a class="anchor" id="3.4.4-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.5.-Feature-extraction--3.4.5" href="#3.4.5.-Feature-extraction-"><span class="toc-item-num">3.4.5  </span>3.4.5. Feature extraction <a class="anchor" id="3.4.5-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.6.-Transofrmaciones-de-los-datos--3.4.6" href="#3.4.6.-Transofrmaciones-de-los-datos-"><span class="toc-item-num">3.4.6  </span>3.4.6. Transofrmaciones de los datos <a class="anchor" id="3.4.7-bullet"></a></a></span></li><li><span><a data-toc-modified-id="3.4.7.-Dimension-reduction--3.4.7" href="#3.4.7.-Dimension-reduction-"><span class="toc-item-num">3.4.7  </span>3.4.7. Dimension reduction <a class="anchor" id="3.4.6-bullet"></a></a></span></li></ul></li></ul></li><li><span><a data-toc-modified-id="4.-Modelado--4" href="#4.-Modelado-"><span class="toc-item-num">4  </span>4. Modelado <a class="anchor" id="4-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="4.1.-Preparación-del-modelado--4.1" href="#4.1.-Preparación-del-modelado-"><span class="toc-item-num">4.1  </span>4.1. Preparación del modelado <a class="anchor" id="4.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.2.-Entrenamiento-de-los-modelos--4.2" href="#4.2.-Entrenamiento-de-los-modelos-"><span class="toc-item-num">4.2  </span>4.2. Entrenamiento de los modelos <a class="anchor" id="4.2-bullet"></a></a></span><ul class="toc-item"><li><span><a data-toc-modified-id="4.2.1.-Linear-Regression--4.2.1" href="#4.2.1.-Linear-Regression-"><span class="toc-item-num">4.2.1  </span>4.2.1. Linear Regression <a class="anchor" id="4.2.1-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.2.2.-Linear-Regression,-L1-Regularisation--4.2.2" href="#4.2.2.-Linear-Regression,-L1-Regularisation-"><span class="toc-item-num">4.2.2  </span>4.2.2. Linear Regression, L1 Regularisation <a class="anchor" id="4.2.2-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="4.3.-Comparación-de-modelos--4.3" href="#4.3.-Comparación-de-modelos-"><span class="toc-item-num">4.3  </span>4.3. Comparación de modelos <a class="anchor" id="4.3-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.4.-Feature-selection--4.4" href="#4.4.-Feature-selection-"><span class="toc-item-num">4.4  </span>4.4. Feature selection <a class="anchor" id="4.4-bullet"></a></a></span></li><li><span><a data-toc-modified-id="4.5.-Optimización--4.5" href="#4.5.-Optimización-"><span class="toc-item-num">4.5  </span>4.5. Optimización <a class="anchor" id="4.5-bullet"></a></a></span></li></ul></li><li><span><a data-toc-modified-id="5.-Evaluación--5" href="#5.-Evaluación-"><span class="toc-item-num">5  </span>5. Evaluación <a class="anchor" id="5-bullet"></a></a></span></li><li><span><a data-toc-modified-id="6.-Puesta-en-producción--6" href="#6.-Puesta-en-producción-"><span class="toc-item-num">6  </span>6. Puesta en producción <a class="anchor" id="6-bullet"></a></a></span></li></ul></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Entendimiento-del-negocio-">1. Entendimiento del negocio <a class="anchor" id="1-bullet"></a><a class="anchor-link" href="#1.-Entendimiento-del-negocio-">¶</a></h2><hr/>
+<p>&lt;/center&gt;<small><a href="link">Lugar de descripción del problema</a></small>&lt;/center&gt;</p>
+<ul>
+<li>Texto descriptivo del negocio.</li>
+</ul>
+<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="ImagenLinda.png" width="100%"/></div><br/></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.1.-Contexto-">1.1. Contexto <a class="anchor" id="1.1-bullet"></a><a class="anchor-link" href="#1.1.-Contexto-">¶</a></h3><ul>
+<li>Descripción del problema.</li>
+</ul>
+<p><div style="text-align:center"><img alt="drawing" class="img-fluid" height="100%" src="ImagenLinda.png" width="100%"/></div>&lt;br/</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.2.-DataSet-">1.2. DataSet <a class="anchor" id="1.2-bullet"></a><a class="anchor-link" href="#1.2.-DataSet-">¶</a></h3><ul>
+<li>Descripción del Dataset.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="1.3.-Objetivo-">1.3. Objetivo <a class="anchor" id="1.3-bullet"></a><a class="anchor-link" href="#1.3.-Objetivo-">¶</a></h3><ul>
+<li>Objetivo a resolver en este problema.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Entendimiento-de-los-datos-">2. Entendimiento de los datos <a class="anchor" id="2-bullet"></a><a class="anchor-link" href="#2.-Entendimiento-de-los-datos-">¶</a></h2><hr/>
+<p>Antes de comenzar con el análisis y modelado de la solución del problema, debemos entender que explican los atributos.
+En este punto se comprenden los atributos y se analiza su importancia para el problema y la solución.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.1.-Atributos-">2.1. Atributos <a class="anchor" id="2.1-bullet"></a><a class="anchor-link" href="#2.1.-Atributos-">¶</a></h3><ul>
+<li>Descripción de los atributos.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="2.2.-Análisis-de-los-atributos-">2.2. Análisis de los atributos <a class="anchor" id="2.2-bullet"></a><a class="anchor-link" href="#2.2.-Análisis-de-los-atributos-">¶</a></h3><p>En esta sección se hace un análisis previo de los atributos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="2.2.1.-Importancia-">2.2.1. Importancia <a class="anchor" id="2.2.1-bullet"></a><a class="anchor-link" href="#2.2.1.-Importancia-">¶</a></h4><p>La importancia de los atributos con respecto al contexto es muy importante, ya que atributos que no tienen importancia dado el contexto, pueden afectar la predicción final.</p>
+<ul>
+<li>Importancia de cada atributo o indicar los que no son importantes.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Preparación-de-los-datos-">3. Preparación de los datos <a class="anchor" id="3-bullet"></a><a class="anchor-link" href="#3.-Preparación-de-los-datos-">¶</a></h2><p>En esta sección se preparan los datos para ser utilizados por varios modelos. Se tiene en cuenta las restricciones de los modelos, por lo que se pueden preparar varios conjuntos para distintos modelos.</p>
+<ul>
+<li>Como se enfocan estos problemas usualmente.</li>
+<li>Tipos de algoritmos a utilizar.</li>
+<li>Restricciones de los datos para dichos algoritmos.</li>
+</ul>
+<p>Ej, para la resgresión lineal:
+Requerimientos de los atributos para la regresión lineal:</p>
+<ol>
+<li>Asumir una relación lineal entre los datos.</li>
+<li>Remover el ruido.</li>
+<li>Remover atributos correlacionados.</li>
+<li>Distribución gaussiana.</li>
+<li>Normalizar entradas.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.1.-Importación-de-librerías-">3.1. Importación de librerías <a class="anchor" id="3.1-bullet"></a><a class="anchor-link" href="#3.1.-Importación-de-librerías-">¶</a></h3><p>Las librerías a utilizar son las siguientes:</p>
+<ul>
+<li><code>numpy</code> $\rightarrow$ NumPy es el paquete fundamental para la informática científica con Python (<a href="http://www.numpy.org/">http://www.numpy.org/</a>).</li>
+<li><code>pandas</code> $\rightarrow$ Pandas provee herramientas para la importación y el fácil análisis de los datos (<a href="https://pandas.pydata.org/">https://pandas.pydata.org/</a>).</li>
+<li><code>matplotlib</code> $\rightarrow$ Matplotlib permite graficar los datos (<a href="https://matplotlib.org/">https://matplotlib.org/</a>).</li>
+<li><code>seaborn</code> $\rightarrow$ Seaborn permite una linda visualización estadística de los datos, en conjunción con matplotlib (<a href="https://seaborn.pydata.org/">https://seaborn.pydata.org/</a>).</li>
+<li><code>pandas_profiling</code> $\rightarrow$ Brinda un completo resumen de los datos (<a href="https://github.com/pandas-profiling/pandas-profiling">https://github.com/pandas-profiling/pandas-profiling</a>).</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [20]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">"whitegrid"</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">pandas_profiling</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas_profiling\plot.py:15: UserWarning: 
+This call to matplotlib.use() has no effect because the backend has already
+been chosen; matplotlib.use() must be called *before* pylab, matplotlib.pyplot,
+or matplotlib.backends is imported for the first time.
+
+The backend was *originally* set to 'module://ipykernel.pylab.backend_inline' by the following code:
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\runpy.py", line 193, in _run_module_as_main
+    "__main__", mod_spec)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\runpy.py", line 85, in _run_code
+    exec(code, run_globals)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel_launcher.py", line 16, in &lt;module&gt;
+    app.launch_new_instance()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\traitlets\config\application.py", line 658, in launch_instance
+    app.start()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\kernelapp.py", line 486, in start
+    self.io_loop.start()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\tornado\platform\asyncio.py", line 132, in start
+    self.asyncio_loop.run_forever()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\asyncio\base_events.py", line 422, in run_forever
+    self._run_once()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\asyncio\base_events.py", line 1434, in _run_once
+    handle._run()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\asyncio\events.py", line 145, in _run
+    self._callback(*self._args)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\tornado\platform\asyncio.py", line 122, in _handle_events
+    handler_func(fileobj, events)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\tornado\stack_context.py", line 300, in null_wrapper
+    return fn(*args, **kwargs)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\zmq\eventloop\zmqstream.py", line 450, in _handle_events
+    self._handle_recv()
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\zmq\eventloop\zmqstream.py", line 480, in _handle_recv
+    self._run_callback(callback, msg)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\zmq\eventloop\zmqstream.py", line 432, in _run_callback
+    callback(*args, **kwargs)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\tornado\stack_context.py", line 300, in null_wrapper
+    return fn(*args, **kwargs)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\kernelbase.py", line 283, in dispatcher
+    return self.dispatch_shell(stream, msg)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\kernelbase.py", line 233, in dispatch_shell
+    handler(stream, idents, msg)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\kernelbase.py", line 399, in execute_request
+    user_expressions, allow_stdin)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\ipkernel.py", line 208, in do_execute
+    res = shell.run_cell(code, store_history=store_history, silent=silent)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\ipykernel\zmqshell.py", line 537, in run_cell
+    return super(ZMQInteractiveShell, self).run_cell(*args, **kwargs)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 2662, in run_cell
+    raw_cell, store_history, silent, shell_futures)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 2785, in _run_cell
+    interactivity=interactivity, compiler=compiler, result=result)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 2901, in run_ast_nodes
+    if self.run_code(code, result):
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 2961, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "&lt;ipython-input-20-b994aea22841&gt;", line 6, in &lt;module&gt;
+    get_ipython().run_line_magic('matplotlib', 'inline')
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 2131, in run_line_magic
+    result = fn(*args,**kwargs)
+  File "&lt;decorator-gen-108&gt;", line 2, in matplotlib
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\magic.py", line 187, in &lt;lambda&gt;
+    call = lambda f, *a, **k: f(*a, **k)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\magics\pylab.py", line 99, in matplotlib
+    gui, backend = self.shell.enable_matplotlib(args.gui)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\interactiveshell.py", line 3049, in enable_matplotlib
+    pt.activate_matplotlib(backend)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\IPython\core\pylabtools.py", line 311, in activate_matplotlib
+    matplotlib.pyplot.switch_backend(backend)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\matplotlib\pyplot.py", line 231, in switch_backend
+    matplotlib.use(newbackend, warn=False, force=True)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\matplotlib\__init__.py", line 1422, in use
+    reload(sys.modules['matplotlib.backends'])
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\importlib\__init__.py", line 166, in reload
+    _bootstrap._exec(spec, module)
+  File "c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\matplotlib\backends\__init__.py", line 16, in &lt;module&gt;
+    line for line in traceback.format_stack()
+
+
+  matplotlib.use(BACKEND)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.2.-Importación-de-los-datos-">3.2. Importación de los datos <a class="anchor" id="3.2-bullet"></a><a class="anchor-link" href="#3.2.-Importación-de-los-datos-">¶</a></h3><p>Para importar los datos utilizamos Pandas (<code>pd.read_csv()</code>), con los cual los cargamos en la estructura de datos <strong>Dataframe</strong> de Pandas. En este punto también se realiza los joins necesarios para obtener un conjunto con el que trabajar.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Datos de entrenamiento.</span>
+<span class="n">training</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"datasettraining.csv"</span><span class="p">)</span>
+
+<span class="c1"># Datos para testing.</span>
+<span class="n">testing</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"datasettesting.csv"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">FileNotFoundError</span>                         Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-21-7f790f5735e2&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold"># Datos de entrenamiento.</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>training <span class="ansi-yellow-intense-fg ansi-bold">=</span> pd<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_csv<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"datasettraining.csv"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">      3</span> 
+<span class="ansi-green-fg">      4</span> <span class="ansi-red-intense-fg ansi-bold"># Datos para testing.</span>
+<span class="ansi-green-fg">      5</span> testing <span class="ansi-yellow-intense-fg ansi-bold">=</span> pd<span class="ansi-yellow-intense-fg ansi-bold">.</span>read_csv<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-blue-intense-fg ansi-bold">"datasettesting.csv"</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas\io\parsers.py</span> in <span class="ansi-cyan-fg">parser_f</span><span class="ansi-blue-intense-fg ansi-bold">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, escapechar, comment, encoding, dialect, tupleize_cols, error_bad_lines, warn_bad_lines, skipfooter, doublequote, delim_whitespace, low_memory, memory_map, float_precision)</span>
+<span class="ansi-green-fg">    676</span>                     skip_blank_lines=skip_blank_lines)
+<span class="ansi-green-fg">    677</span> 
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 678</span><span class="ansi-yellow-intense-fg ansi-bold">         </span><span class="ansi-green-intense-fg ansi-bold">return</span> _read<span class="ansi-yellow-intense-fg ansi-bold">(</span>filepath_or_buffer<span class="ansi-yellow-intense-fg ansi-bold">,</span> kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    679</span> 
+<span class="ansi-green-fg">    680</span>     parser_f<span class="ansi-yellow-intense-fg ansi-bold">.</span>__name__ <span class="ansi-yellow-intense-fg ansi-bold">=</span> name
+
+<span class="ansi-green-intense-fg ansi-bold">c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas\io\parsers.py</span> in <span class="ansi-cyan-fg">_read</span><span class="ansi-blue-intense-fg ansi-bold">(filepath_or_buffer, kwds)</span>
+<span class="ansi-green-fg">    438</span> 
+<span class="ansi-green-fg">    439</span>     <span class="ansi-red-intense-fg ansi-bold"># Create the parser.</span>
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 440</span><span class="ansi-yellow-intense-fg ansi-bold">     </span>parser <span class="ansi-yellow-intense-fg ansi-bold">=</span> TextFileReader<span class="ansi-yellow-intense-fg ansi-bold">(</span>filepath_or_buffer<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    441</span> 
+<span class="ansi-green-fg">    442</span>     <span class="ansi-green-intense-fg ansi-bold">if</span> chunksize <span class="ansi-green-intense-fg ansi-bold">or</span> iterator<span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas\io\parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, f, engine, **kwds)</span>
+<span class="ansi-green-fg">    785</span>             self<span class="ansi-yellow-intense-fg ansi-bold">.</span>options<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'has_index_names'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> kwds<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'has_index_names'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span>
+<span class="ansi-green-fg">    786</span> 
+<span class="ansi-green-intense-fg ansi-bold">--&gt; 787</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_make_engine<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>engine<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">    788</span> 
+<span class="ansi-green-fg">    789</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> close<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas\io\parsers.py</span> in <span class="ansi-cyan-fg">_make_engine</span><span class="ansi-blue-intense-fg ansi-bold">(self, engine)</span>
+<span class="ansi-green-fg">   1012</span>     <span class="ansi-green-intense-fg ansi-bold">def</span> _make_engine<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">,</span> engine<span class="ansi-yellow-intense-fg ansi-bold">=</span><span class="ansi-blue-intense-fg ansi-bold">'c'</span><span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1013</span>         <span class="ansi-green-intense-fg ansi-bold">if</span> engine <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">'c'</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1014</span><span class="ansi-yellow-intense-fg ansi-bold">             </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_engine <span class="ansi-yellow-intense-fg ansi-bold">=</span> CParserWrapper<span class="ansi-yellow-intense-fg ansi-bold">(</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>f<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>options<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1015</span>         <span class="ansi-green-intense-fg ansi-bold">else</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+<span class="ansi-green-fg">   1016</span>             <span class="ansi-green-intense-fg ansi-bold">if</span> engine <span class="ansi-yellow-intense-fg ansi-bold">==</span> <span class="ansi-blue-intense-fg ansi-bold">'python'</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
+
+<span class="ansi-green-intense-fg ansi-bold">c:\programdata\anaconda3\envs\ml-porfolio\lib\site-packages\pandas\io\parsers.py</span> in <span class="ansi-cyan-fg">__init__</span><span class="ansi-blue-intense-fg ansi-bold">(self, src, **kwds)</span>
+<span class="ansi-green-fg">   1706</span>         kwds<span class="ansi-yellow-intense-fg ansi-bold">[</span><span class="ansi-blue-intense-fg ansi-bold">'usecols'</span><span class="ansi-yellow-intense-fg ansi-bold">]</span> <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>usecols
+<span class="ansi-green-fg">   1707</span> 
+<span class="ansi-green-intense-fg ansi-bold">-&gt; 1708</span><span class="ansi-yellow-intense-fg ansi-bold">         </span>self<span class="ansi-yellow-intense-fg ansi-bold">.</span>_reader <span class="ansi-yellow-intense-fg ansi-bold">=</span> parsers<span class="ansi-yellow-intense-fg ansi-bold">.</span>TextReader<span class="ansi-yellow-intense-fg ansi-bold">(</span>src<span class="ansi-yellow-intense-fg ansi-bold">,</span> <span class="ansi-yellow-intense-fg ansi-bold">**</span>kwds<span class="ansi-yellow-intense-fg ansi-bold">)</span>
+<span class="ansi-green-fg">   1709</span> 
+<span class="ansi-green-fg">   1710</span>         passed_names <span class="ansi-yellow-intense-fg ansi-bold">=</span> self<span class="ansi-yellow-intense-fg ansi-bold">.</span>names <span class="ansi-green-intense-fg ansi-bold">is</span> <span class="ansi-green-intense-fg ansi-bold">None</span>
+
+<span class="ansi-green-intense-fg ansi-bold">pandas\_libs\parsers.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.parsers.TextReader.__cinit__</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+
+<span class="ansi-green-intense-fg ansi-bold">pandas\_libs\parsers.pyx</span> in <span class="ansi-cyan-fg">pandas._libs.parsers.TextReader._setup_parser_source</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+
+<span class="ansi-red-intense-fg ansi-bold">FileNotFoundError</span>: File b'datasettraining.csv' does not exist</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.3.-Visualización-de-los-datos-">3.3. Visualización de los datos <a class="anchor" id="3.3-bullet"></a><a class="anchor-link" href="#3.3.-Visualización-de-los-datos-">¶</a></h3><p>Para visualizar los datos podemos utilizar varias de las funciones de Pandas, como lo son:</p>
+<ul>
+<li><code>pd.dataframe.head()</code></li>
+<li><code>pd.dataframe.sample(5)</code></li>
+<li><code>pd.dataframe.keys()</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los primeros 5 datos.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt"></div>
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-1-da75a26a85ab&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-intense-fg ansi-bold">()</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-red-intense-fg ansi-bold"># Ver los primeros 5 datos.</span>
+<span class="ansi-green-intense-fg ansi-bold">----&gt; 2</span><span class="ansi-yellow-intense-fg ansi-bold"> </span>data<span class="ansi-yellow-intense-fg ansi-bold">.</span>head<span class="ansi-yellow-intense-fg ansi-bold">(</span><span class="ansi-yellow-intense-fg ansi-bold">)</span>
+
+<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name 'data' is not defined</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver una muestra aleatoria de 5.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver los atributos.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.3.1.-Pre-tratamiento-de-los-datos-">3.3.1. Pre-tratamiento de los datos <a class="anchor" id="3.3.1-bullet"></a><a class="anchor-link" href="#3.3.1.-Pre-tratamiento-de-los-datos-">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Obtenemos el Id de los datos.</span>
+<span class="n">testID</span> <span class="o">=</span> <span class="n">testing</span><span class="p">[</span><span class="s1">'Id'</span><span class="p">]</span>
+
+<span class="c1"># Creamos un conjunto data que tiene ambos conjuntos, para así realizar las transformaciones a ambos también.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">training</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">'SalePrice'</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">testing</span><span class="p">],</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s1">'train'</span><span class="p">,</span> <span class="s1">'test'</span><span class="p">])</span>
+
+<span class="c1"># Eliminamos el índice.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Id'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#### 3.3.2. Información estadística de los datos &lt;a class="anchor" id="3.3.2-bullet"&gt;&lt;/a&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Podemos ver información sobre el conjunto utilizando <code>pd.dataframe.info()</code></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Todos los datos.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Conjunto de testing.</span>
+<span class="n">testing</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Esta función nos muestra los tipos de datos (enteros, reales, nominales, etc.) y también la cantidad de elementos que tiene el conjunto, así como también cuantos elementos tiene cada atributo.</p>
+<p>Como resultado podemos ver que se tienen:</p>
+<ul>
+<li>Enteros $\rightarrow$ 35</li>
+<li>Reales $\rightarrow$ 3</li>
+<li>Nominales $\rightarrow$ 43</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Podemos visualizar las estadísticas de los datos con la funcionalidad <code>pd.dataframe.describe()</code> de Pandas.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Ver estadísticas simples de los datos.</span>
+<span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.3.3.-Pandas-profiling-">3.3.3. Pandas-profiling <a class="anchor" id="3.3.3-bullet"></a><a class="anchor-link" href="#3.3.3.-Pandas-profiling-">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generar resumen y mostrar.</span>
+<span class="n">pandas_profiling</span><span class="o">.</span><span class="n">ProfileReport</span><span class="p">(</span><span class="n">training</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="3.4.-Tratamiento-de-los-datos-">3.4. Tratamiento de los datos <a class="anchor" id="3.4-bullet"></a><a class="anchor-link" href="#3.4.-Tratamiento-de-los-datos-">¶</a></h3><p>En este punto se realizan las transformaciones de los datos que se adecuan a los modelos a utilizar.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.1.-Sanitizar-los-datos-">3.4.1. Sanitizar los datos <a class="anchor" id="3.4.1-bullet"></a><a class="anchor-link" href="#3.4.1.-Sanitizar-los-datos-">¶</a></h4><p>La sanitización de los datos se utiliza ya que pueden haber instancias que estén mal, en relación al tipo de dato. Este análisis es más a nivel de negocio que de dato, ya que el negocio implica reglas que los datos deben cumplir.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.2.-Tratamiento-datos-faltantes-">3.4.2. Tratamiento datos faltantes <a class="anchor" id="3.4.2-bullet"></a><a class="anchor-link" href="#3.4.2.-Tratamiento-datos-faltantes-">¶</a></h4><p>Los datos faltantes son inadmitibles para muchos modelos. El tratamiento de los datos faltantes implica imputar un valor, eliminar dichos datos o eliminar el atributo.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.3.-Tratamiento-de-outliers-">3.4.3. Tratamiento de outliers <a class="anchor" id="3.4.3-bullet"></a><a class="anchor-link" href="#3.4.3.-Tratamiento-de-outliers-">¶</a></h4><p>Hay muchos modelos en los cuales los outliers reducen la performance o inducen un sesgo indeseado. Por eso, se debe detectar y tratar los outliers para evitar este tipo de problemas.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.4.-Correlación-de-atributos-">3.4.4. Correlación de atributos <a class="anchor" id="3.4.4-bullet"></a><a class="anchor-link" href="#3.4.4.-Correlación-de-atributos-">¶</a></h4><p>Hay muchos (como los modelos lineales) que la correlación de los atributos influye fuertemente en los modelos. Es por esto, que muchas veces se debe chequear la correlación de los atributos para así eliminar los que están altamente correlacionados.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.5.-Feature-extraction-">3.4.5. Feature extraction <a class="anchor" id="3.4.5-bullet"></a><a class="anchor-link" href="#3.4.5.-Feature-extraction-">¶</a></h4><p>Muchas veces se puede "diseñar" un atributo que es combinación de otros atributos (lineal o no lineal) para así obtener más información. Tal vez, este atrubto generado es un mejor predictor y se mejora la solución.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.6.-Transofrmaciones-de-los-datos-">3.4.6. Transofrmaciones de los datos <a class="anchor" id="3.4.7-bullet"></a><a class="anchor-link" href="#3.4.6.-Transofrmaciones-de-los-datos-">¶</a></h4><p>En este punto se realizan las transofrmaciones necesarias de los datos. Las transformaciones incluyen desde transformaciones para reducir el sesgo o ajustar distribuciones de los datos hasta transformar los datos a valores numericos o a valores categóricos. También en este punto se incluye la estandarización y normalización si se debe hacer.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="3.4.7.-Dimension-reduction-">3.4.7. Dimension reduction <a class="anchor" id="3.4.6-bullet"></a><a class="anchor-link" href="#3.4.7.-Dimension-reduction-">¶</a></h4><p>Si las dimensiones son muy grantes, podemos aplicar técnicas que reduzcan la dimensionalidad de los atributos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-Modelado-">4. Modelado <a class="anchor" id="4-bullet"></a><a class="anchor-link" href="#4.-Modelado-">¶</a></h2><hr/>
+<p>En esta sección probamos varios modelos de machine learning. Utilizamos la librería <strong>sklearn</strong>.</p>
+<p>Utilizaremos los siguientes modelos:</p>
+<ul>
+<li><code>sklearn.linear_model.LinearRegression</code> $\Rightarrow$ <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html</a></li>
+<li><code>sklearn.linear_model.LassoCV</code> $\Rightarrow$ <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html">http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LassoCV.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Modelos a utilizar:</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LassoCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Y para chequear la performance de nuestros modelos utilizamos:</p>
+<ul>
+<li><code>sklearn.metrics.make_scorer</code> $\Rightarrow$ <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.make_scorer.html</a></li>
+<li><code>sklearn.metrics.accuracy_score</code> $\Rightarrow$ <a href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html</a></li>
+<li><code>sklearn.model_selection.cross_val_score</code> $\Rightarrow$ <a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html">http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_val_score.html</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">make_scorer</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Utilizaremos <code>sklearn.model_selection.GridSearchCV</code> (<a href="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html</a>) para la optimización del modelo basado en fuerza bruta o <code>sklearn-deap.evolutionary_search.EvolutionaryAlgorithmSearchCV</code> (<a href="https://github.com/rsteca/sklearn-deap">https://github.com/rsteca/sklearn-deap</a>) para la optimización del modelo basado en algoritmos evolutivos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">evolutionary_search</span> <span class="k">import</span> <span class="n">EvolutionaryAlgorithmSearchCV</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Utilizaremos <code>sklearn.feature_selection.SelectFromModel</code> (<a href="http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel">http://scikit-learn.org/stable/modules/generated/sklearn.feature_selection.SelectFromModel.html#sklearn.feature_selection.SelectFromModel</a>) para la optimización de los parámetros.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="k">import</span> <span class="n">SelectFromModel</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.1.-Preparación-del-modelado-">4.1. Preparación del modelado <a class="anchor" id="4.1-bullet"></a><a class="anchor-link" href="#4.1.-Preparación-del-modelado-">¶</a></h3><p>Los conjuntos a utilizar en el modelado son:</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'X_test:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'X_train:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">'y_train:'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_train</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.2.-Entrenamiento-de-los-modelos-">4.2. Entrenamiento de los modelos <a class="anchor" id="4.2-bullet"></a><a class="anchor-link" href="#4.2.-Entrenamiento-de-los-modelos-">¶</a></h3><p>En esta sección se entrenan los modelos especificados anteriormente para ver cuál es el que realiza la mejor predicción.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.2.1.-Linear-Regression-">4.2.1. Linear Regression <a class="anchor" id="4.2.1-bullet"></a><a class="anchor-link" href="#4.2.1.-Linear-Regression-">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
+<span class="n">linreg_clf</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Entrenamos el modelo.</span>
+<span class="n">linreg_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validación cruzada.</span>
+<span class="n">acc_linreg</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">linreg_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc_linreg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="4.2.2.-Linear-Regression,-L1-Regularisation-">4.2.2. Linear Regression, L1 Regularisation <a class="anchor" id="4.2.2-bullet"></a><a class="anchor-link" href="#4.2.2.-Linear-Regression,-L1-Regularisation-">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Cargamos el modelo.</span>
+<span class="n">linl1_clf</span> <span class="o">=</span> <span class="n">LassoCV</span><span class="p">()</span>
+
+<span class="c1"># Entrenamos el modelo.</span>
+<span class="n">linl1_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Validación cruzada.</span>
+<span class="n">acc_linl1</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">linl1_clf</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">acc_linl1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.3.-Comparación-de-modelos-">4.3. Comparación de modelos <a class="anchor" id="4.3-bullet"></a><a class="anchor-link" href="#4.3.-Comparación-de-modelos-">¶</a></h3><p>Una vez que tenemos las precisiones de los modelos, podemos comparar las performance de los modelos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Creamos un dataframe para mostrar los datos.</span>
+<span class="n">model_performance</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Model"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Linear Regression"</span><span class="p">,</span> <span class="s2">"Linear Regression L1"</span><span class="p">],</span>
+    <span class="s2">"Accuracy"</span><span class="p">:</span> <span class="p">[</span><span class="n">acc_linreg</span><span class="p">,</span> <span class="n">acc_linl1</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Ordenamos de mayor a menor.</span>
+<span class="n">model_performance</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"Accuracy"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.4.-Feature-selection-">4.4. Feature selection <a class="anchor" id="4.4-bullet"></a><a class="anchor-link" href="#4.4.-Feature-selection-">¶</a></h3><p>Una vez que tenemos el modelo que nos de la mejor predición, realizamos la selección de atributos utilizando algoritmos evolutivos para observar si se mejora en la predicción o no. En si, esto se debería realizar para cada algoritmo, y luego compararlos, pero consume mucho tiempo este tipo de procesos.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="4.5.-Optimización-">4.5. Optimización <a class="anchor" id="4.5-bullet"></a><a class="anchor-link" href="#4.5.-Optimización-">¶</a></h3><p>En esta sección se optimiza el modelo para utilizarlo en la puesta a producción.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Evaluación-">5. Evaluación <a class="anchor" id="5-bullet"></a><a class="anchor-link" href="#5.-Evaluación-">¶</a></h2><hr/>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-Puesta-en-producción-">6. Puesta en producción <a class="anchor" id="6-bullet"></a><a class="anchor-link" href="#6.-Puesta-en-producción-">¶</a></h2><hr/>
+</div>
+</div>
+</div>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
+    </div>
+  </article>
+  <hr>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'https://brunomaso1.github.io/blog/drafts/jupyter-notebook-crispdm-template.html';
+      this.page.identifier = 'jupyter-notebook-crispdm-template';
+    };
+    (function() {
+      var d = document;
+      var s = d.createElement('script');
+      s.src = '//brunomaso1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript class="text-muted">
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+    <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/archives.html">Archivos</a></li>
+    <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/categories.html">Categorias</a></li>
+      <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/tags.html">Tags</a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Generated by <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+  </p>
+</div>    </div>
+  </footer>
+  
+			<script src="https://brunomaso1.github.io/blog/js/notebook-fixes.js"></script>
+			<script src="https://brunomaso1.github.io/blog/js/tables.js"></script>
+</body>
+
+</html>

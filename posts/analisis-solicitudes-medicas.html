@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>  ANÁLISIS DE LAS SOLICITUDES MEDICAS URUGUAY 2016 | Descubriendo el mundo tecnológico
+</title>
+  <link rel="canonical" href="https://brunomaso1.github.io/blog/posts/analisis-solicitudes-medicas.html">
+
+    <link rel="apple-touch-icon" href="https://brunomaso1.github.io/blog/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" type="image/png" href="https://brunomaso1.github.io/blog/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://brunomaso1.github.io/blog/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="https://brunomaso1.github.io/blog/manifest.json">
+    <meta name="theme-color" content="#333333">
+
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/pygments/monokai.min.css">
+  <link rel="stylesheet" href="https://brunomaso1.github.io/blog/theme/css/theme.css">
+
+  <link rel="alternate" type="application/atom+xml" title="Full Atom Feed"
+        href="https://brunomaso1.github.io/blog/feeds/all.atom.xml">
+  <link rel="alternate" type="application/atom+xml" title="Categories Atom Feed"
+        href="https://brunomaso1.github.io/blog/feeds/ciencia-de-datos.atom.xml">  
+  <meta name="description" content="Análisis de las solicitudes medicas de Uruguay del año 2016.">
+
+
+  
+  
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+<div class="row">
+    <div class="col-sm-4">
+      <a href="https://brunomaso1.github.io/blog/">
+        <img class="img-fluid rounded" src=https://brunomaso1.github.io/blog/images/profile.jpg width=250 height=250 alt="Descubriendo el mundo tecnológico">
+      </a>
+    </div>
+  <div class="col-sm-8 text-center">
+    <h1 class="title"><a href="https://brunomaso1.github.io/blog/">Descubriendo el mundo tecnológico</a></h1>
+      <p class="text-muted">Blog orientado a la discusión de tecnologías</p>
+      <ul class="list-inline">
+          <li class="list-inline-item"><a href="/pages/crisp-dm.html" target="_blank">CRISP-DM</a></li>
+          <li class="list-inline-item"><a href="http://python.org/" target="_blank">Python.org</a></li>
+          <li class="list-inline-item"><a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a></li>
+            <li class=" list-inline-item text-muted">|</li>
+          <li class="list-inline-item"><a class="fa fa-feed" href="https://brunomaso1.github.io/blog/feeds/all.atom.xml" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-github" href="https://github.com/brunomaso1" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-linkedin" href="https://www.linkedin.com/in/brunomaso1" target="_blank"></a></li>
+          <li class="list-inline-item"><a class="fa fa-twitter" href="https://twitter.com/brunomaso11" target="_blank"></a></li>
+      </ul>
+  </div>
+</div>    </div>
+  </header>
+
+  <div class="main">
+    <div class="container">
+      <h1>  ANÁLISIS DE LAS SOLICITUDES MEDICAS URUGUAY 2016
+</h1>
+      <hr>
+  <article class="article">
+    <header>
+      <ul class="list-inline">
+        <li class="list-inline-item text-muted" title="2019-12-29T12:00:00-03:00">
+          <i class="fa fa-clock-o"></i>
+          dom 29 diciembre 2019
+        </li>
+        <li class="list-inline-item">
+          <i class="fa fa-folder-open-o"></i>
+          <a href="https://brunomaso1.github.io/blog/category/ciencia-de-datos.html">Ciencia de datos</a>
+        </li>
+          <li class="list-inline-item">
+            <i class="fa fa-files-o"></i>
+              <a href="https://brunomaso1.github.io/blog/tag/crisp-dm.html">#CRISP-DM</a>,               <a href="https://brunomaso1.github.io/blog/tag/aprendizaje-automatico.html">#Aprendizaje automático</a>,               <a href="https://brunomaso1.github.io/blog/tag/rapidminer.html">#Rapidminer</a>,               <a href="https://brunomaso1.github.io/blog/tag/mineria-de-datos.html">#Minería de datos</a>,               <a href="https://brunomaso1.github.io/blog/tag/inteligencia-artificial.html">#Inteligencia artificial</a>,               <a href="https://brunomaso1.github.io/blog/tag/programacion.html">#Programación</a>,               <a href="https://brunomaso1.github.io/blog/tag/solicitudes2018.html">#Solicitudes2018</a>,               <a href="https://brunomaso1.github.io/blog/tag/uruguay.html">#Uruguay</a>,               <a href="https://brunomaso1.github.io/blog/tag/aprendizaje-supervisado.html">#Aprendizaje supervisado</a>          </li>
+      </ul>
+    </header>
+    <div class="content">
+      <div class="toc"><span class="toctitle">Tabla de contenido:</span><ul>
+<li><a href="#entendimiento-del-negocio">Entendimiento del negocio</a><ul>
+<li><a href="#contexto">Contexto</a></li>
+<li><a href="#dataset">DataSet</a></li>
+<li><a href="#objetivo">Objetivo</a></li>
+</ul>
+</li>
+<li><a href="#entendimiento-de-los-datos">Entendimiento de los datos</a><ul>
+<li><a href="#atributos">Atributos</a></li>
+<li><a href="#analisis-de-los-atributos">Análisis de los atributos</a><ul>
+<li><a href="#importancia">Importancia</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#preparacion-de-los-datos">Preparación de los datos</a><ul>
+<li><a href="#importacion-de-librerias">Importación de librerías</a></li>
+<li><a href="#importacion-de-los-datos">Importación de los datos</a></li>
+<li><a href="#visualizacion-de-los-datos">Visualización de los datos</a></li>
+<li><a href="#tratamiento-de-los-datos">Tratamiento de los datos</a><ul>
+<li><a href="#sanitizar-los-datos">Sanitizar los datos</a></li>
+<li><a href="#tratamiento-datos-faltantes">Tratamiento datos faltantes</a></li>
+<li><a href="#tratamiento-de-outliers">Tratamiento de outliers</a></li>
+<li><a href="#correlacion-de-atributos">Correlación de atributos</a></li>
+<li><a href="#feature-extraction">Feature extraction</a></li>
+<li><a href="#transformaciones-de-los-datos">Transformaciones de los datos</a></li>
+<li><a href="#dimension-reduction">Dimension reduction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#modelado">Modelado</a><ul>
+<li><a href="#preparacion-del-modelado">Preparación del modelado</a></li>
+<li><a href="#entrenamiento-de-los-modelos">Entrenamiento de los modelos</a><ul>
+<li><a href="#logistic-regression">Logistic Regression</a></li>
+<li><a href="#linear-discriminant-analysis">Linear Discriminant Analysis</a></li>
+<li><a href="#decision-tree">Decision Tree</a></li>
+<li><a href="#naive-bayes">Naive Bayes</a></li>
+<li><a href="#k-nn">k-NN</a></li>
+<li><a href="#svm">SVM</a></li>
+<li><a href="#neural-net">Neural Net</a></li>
+<li><a href="#random-forest">Random Forest</a></li>
+<li><a href="#gradient-boosting-trees">Gradient Boosting Trees</a></li>
+</ul>
+</li>
+<li><a href="#comparacion-de-modelos">Comparación de modelos</a></li>
+<li><a href="#feature-selection">Feature selection</a></li>
+<li><a href="#optimizacion">Optimización</a></li>
+</ul>
+</li>
+<li><a href="#evaluacion">Evaluación</a></li>
+<li><a href="#puesta-en-produccion">Puesta en producción</a></li>
+</ul>
+</div>
+<h2 id="entendimiento-del-negocio">Entendimiento del negocio</h2>
+<hr/>
+<p><center><small><a href="https://catalogodatos.gub.uy/dataset/solicitudes_2016_fondo-nacional-de-recursos">https://catalogodatos.gub.uy/dataset/solicitudes_2016_fondo-nacional-de-recursos</a></small></center></p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="60%" src="http://www.fnr.gub.uy/sites/all/themes/fnrpb2013/logo.png" width="60%"/></div>
+<p><br/></p>
+<p>El <strong>Fondo Nacional de Recursos</strong> (FNR) es una institución creada por el decreto <em>Ley 14.897</em> con carácter de persona pública no estatal, que brinda cobertura financiera a procedimientos de medicina altamente especializada y a medicamentos de alto precio para toda la población que se radique en el país y que sea usuaria del Sistema Nacional Integrado de Salud.</p>
+<p>En el caso de los procedimientos cubiertos estos se efectúan a través de los Institutos de Medicina Altamente Especializada (IMAE) que son prestadores públicos o privados, que cuentan con la habilitación del Ministerio de Salud Pública para su realización.</p>
+<h3 id="contexto">Contexto</h3>
+<p>Actualmente, los medicamentos y actos médicos (de alto costo) necesitan una aprobación previa del FNR para su realización, por lo que cada caso es evaluado para luego tomar una decisión si brindar el apoyo económico o no.</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="90%" src="https://fee.org/media/24118/health-care_mini.jpg?anchor=center&amp;mode=crop&amp;width=1920&amp;rnd=131497055300000000" width="90%"/></div>
+<p><br/></p>
+<h3 id="dataset">DataSet</h3>
+<p>El conjunto se puede obtener del siguiente link: <a href="https://catalogodatos.gub.uy/dataset/28b09caf-a138-4942-a597-6c2d0d48c361/resource/ff334d61-a6de-40fe-b663-1cb239443f3c/download/datossolicitudes-2016.csv">Datos</a></p>
+<p>El dataset contiene información de las solicitudes (en Uruguay) de medicamentos de alto costo realizadas al FNR en el año 2016. Este dataset pertenece al gobierno uruguayo y en conjunto con AGESIC (Agencia de Gobierno electrónico y Sociedad de la Información y del Conocimiento) lo han publicado en su página de datos abiertos.</p>
+<h3 id="objetivo">Objetivo</h3>
+<p>El objetivo en este caso, es predecir si una solicitud de un paciente será APROVADA o NO APROVADA.</p>
+<p>En el ámbito de Machine Learning este es un problema supervisado de clasificación binaria.</p>
+<h2 id="entendimiento-de-los-datos">Entendimiento de los datos</h2>
+<hr/>
+<p>Antes de comenzar con el análisis y modelado de la solución del problema, debemos entender que explican los atributos.
+En este punto se comprenden los atributos y se analiza su importancia para el problema y la solución.</p>
+<h3 id="atributos">Atributos</h3>
+<p>Según los <a href="https://catalogodatos.gub.uy/dataset/28b09caf-a138-4942-a597-6c2d0d48c361/resource/41f9b26b-4ecc-4802-b0e9-54c6d9f3c2ab/download/metadatosjsonoutput.json">metadatos</a> del dataset, el conjunto cuenta con 16 atributos (incluido la variable objetivo o label).</p>
+<p>Los atributos y su descripción son:</p>
+<ul>
+<li><code>tipo_prestacion</code>: Tipo de prestación <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>BINOMIAL</strong> ("Acto Médico"; "Inicio de Tratamiento con medicamentos")</span></li>
+<li><code>area</code>: Área de la prestación <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("MAC CARDIOLOGÍA"; ACTOS NEFROLOGÍA"; ...)</span></li>
+<li><code>prestacion_cod</code>: Código de la prestación <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("101"; "1201"; ...)</span></li>
+<li><code>prestacion_desc</code>: Descripción de la prestación <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("Protesis de rodilla - Implante"; "Cirugía cardíaca adultos"; ...)</span></li>
+<li><code>fecha_solicitud</code>: Fecha de solicitud (Date) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("08-11-2016"; "05-08-2016"; ...)</span></li>
+<li><code>estado_solicitud</code>: Estado de la solicitud (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>BINOMIAL</strong> ("AUTORIZADO"; "NO AUTORIZADO")</span></li>
+<li><code>fecha_autorizacion</code>: Fecha de autorización (Date) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("08-11-2016"; "05-08-2016"; ...)</span></li>
+<li><code>Paciente</code>: Número de paciente (Integer) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>ENTERO</strong></span></li>
+<li><code>Edad_años</code>: Edad en años (Integer) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>ENTERO</strong></span></li>
+<li><code>Sexo</code>: Sexo (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>BINOMIAL</strong> ("M"; "F")</span></li>
+<li><code>Departamento_residencia</code>: Departamento de residencia del paciente (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("MONTEVIDEO"; "FLORES"; ...)</span></li>
+<li><code>prestador_salud</code>: Prestador de salud (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("CASMU"; "COSEM"; ...)</span></li>
+<li><code>prestador_departamento</code>: Departamento del prestador de salud (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("MONTEVIDEO"; "FLORES"; ...)</span></li>
+<li><code>prestador_tipo</code>: Tipo de prestador (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("OTRO"; "IMAC"; ...)</span> </li>
+<li><code>medico_solicitante</code>: Médico solicitante (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("TOMAS DIESTE FRIEDHEIN"; "BRUNO MASOLLER"; ...)</span></li>
+<li><code>imae</code>: IMAE (String) <span class="math">\(\rightarrow\)</span> <em>Tipo:</em> <span style="color:orange"><strong>POLINOMIAL</strong> ("COMEF"; "CAMOC"; ...)</span></li>
+</ul>
+<h3 id="analisis-de-los-atributos">Análisis de los atributos</h3>
+<p>En esta sección se hace un análisis previo de los atributos.</p>
+<h4 id="importancia">Importancia</h4>
+<p>La importancia de los atributos con respecto al contexto es muy importante, ya que atributos que no tienen importancia dado el contexto, pueden afectar la predicción final.</p>
+<ul>
+<li><code>tipo_prestacion</code> <span class="math">\(\Rightarrow\)</span> El tipo de prestación es un dato importante ya que indica si es un acto médico o un medicamento. <span style="color:green">IMPORTANTE</span></li>
+<li><code>area</code> <span class="math">\(\Rightarrow\)</span> El área de prestación es importante, ya que indica el tipo de tratamiento que se ha realizado. <span style="color:green">IMPORTANTE</span></li>
+<li><code>prestacion_cod</code> <span class="math">\(\Rightarrow\)</span> El código de prestación es el tipo de tratamiento. <span style="color:green">IMPORTANTE</span></li>
+<li><code>prestacion_desc</code> <span class="math">\(\Rightarrow\)</span> Es la descripción de la presentación. Es el mismo atributo que prestacion_cod. <span style="color:red">NO IMPORTANTE</span></li>
+<li><code>fecha_solicitud</code> <span class="math">\(\Rightarrow\)</span> Es la fecha de la solicitud, como no estamos tomando en cuenta el tiempo, para este problema no es importante este atributo. <span style="color:red">NO IMPORTANTE</span></li>
+<li><code>estado_solicitud</code> <span class="math">\(\Rightarrow\)</span> Es la variable objetivo a predecir en este problema. <span style="color:violet"><strong>IMPORTANTE</strong></span></li>
+<li><code>fecha_autorizacion</code> <span class="math">\(\Rightarrow\)</span> Es la fecha de la autorización, como no estamos tomando en cuenta el tiempo, para este problema no es importante este atributo. <span style="color:red">NO IMPORTANTE</span></li>
+<li><code>Paciente</code> <span class="math">\(\Rightarrow\)</span> En este caso, el numero de paciente lo tratamos como un identificador, por lo que para el entrenamiento no es importante. <span style="color:blue">IDENTIFICADOR</span></li>
+<li><code>Edad_años</code> <span class="math">\(\Rightarrow\)</span> La edad es importante para este problema. <span style="color:green">IMPORTANTE</span></li>
+<li><code>Sexo</code> <span class="math">\(\Rightarrow\)</span> ¿Será importante el sexo para decir si autorizar una solicitud? ¿Habrá discriminación de género? XD. <span style="color:green">IMPORTANTE</span></li>
+<li><code>Departamento_residencia</code> <span class="math">\(\Rightarrow\)</span> ¿Será importante el departamento de residencia para decir si autorizar una solicitud?. <span style="color:green">IMPORTANTE</span></li>
+<li><code>prestador_salud</code> <span class="math">\(\Rightarrow\)</span> Es importante porque este atributo dice de donde viene la solicitud. <span style="color:green">IMPORTANTE</span></li>
+<li><code>prestador_departamento</code> <span class="math">\(\Rightarrow\)</span> Es importante porque este atributo dice de que departamento viene la solicitud, lo que no es lo mismo que el departamento de residencia del paciente, aunque pueden estar altamente correlacionados. <span style="color:green">IMPORTANTE</span></li>
+<li><code>prestador_tipo</code> <span class="math">\(\Rightarrow\)</span> El tipo de prestador importa, porque no son los mismos las solicitudes privadas que las solicitudes de prestadores públicos. <span style="color:green">IMPORTANTE</span></li>
+<li><code>medico_solicitante</code> <span class="math">\(\Rightarrow\)</span> Puede ser que el medico sea importante. <span style="color:green">IMPORTANTE</span></li>
+<li><code>imae</code> <span class="math">\(\Rightarrow\)</span> Depende del FNR. <span style="color:green">IMPORTANTE</span></li>
+</ul>
+<h2 id="preparacion-de-los-datos">Preparación de los datos</h2>
+<p>En esta sección se preparan los datos para ser utilizados por varios modelos. Se tiene en cuenta las restricciones de los modelos, por lo que se pueden preparar varios conjuntos para distintos modelos.</p>
+<p>Los problemas de este tipo se suelen utilizar modelos que resuelven problemas de clasificación binaria. Los modelos a probar son los siguientes:</p>
+<ul>
+<li>
+<p><strong>Algoritmos lineales</strong>:</p>
+<ul>
+<li><em><a href="https://en.wikipedia.org/wiki/Logistic_regression">Logistic Regression</a></em><ul>
+<li>Restricciones:<ol>
+<li>Variable de salida binaria.</li>
+<li>Remover el ruido.</li>
+<li>Distribución gaussiana de los atributos.</li>
+<li>Remover atributos correlacionados.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/Linear_discriminant_analysis">Linear Discriminant Analysis</a></em><ul>
+<li>Restricciones:<ol>
+<li>Variable de salida categórica.</li>
+<li>Distribución gaussiana de los atributos.</li>
+<li>Remover los outliers.</li>
+<li>Misma varianza (estandarizar los datos).</li>
+<li>Atributos numéricos.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Algoritmos no lineales</strong>:</p>
+<ul>
+<li><em><a href="https://en.wikipedia.org/wiki/Decision_tree_learning">CART</a></em><ul>
+<li>Restricciones:<ol>
+<li>Sin restricciones.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/Naive_Bayes_classifier">Naive Bayes</a></em><ul>
+<li>Restricciones:<ol>
+<li>Entradas categóricas.</li>
+<li>Distribuciones gausianas (para el caso de entradas continuas), se puede utilizar transformaciones o otro kernel.</li>
+<li>Variable de salida categórica.</li>
+<li>Transformación logarítmica de los datos.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm">KNN</a></em><ul>
+<li>Restricciones:<ol>
+<li>Re-escalar los datos (normalizar).</li>
+<li>Tratamiento de atributos faltantes.</li>
+<li>Baja dimensionalidad (se beneficia altamente de poca dimensionalidad, puede ser una opción probar feature selección con este modelo).</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/Support_vector_machine">SVM</a></em><ul>
+<li>Restricciones:<ol>
+<li>Atributos numéricos.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/Neural_network">Redes neuronales</a></em><ul>
+<li>Restricciones:<ol>
+<li>Atributos numéricos.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Ensambles</strong>:</p>
+<ul>
+<li><em><a href="https://es.wikipedia.org/wiki/Random_forest">Random Forest</a></em><ul>
+<li>Restricciones:<ol>
+<li>Sin restricciones.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><em><a href="https://en.wikipedia.org/wiki/Gradient_boosting">Gradient Boosting Trees</a></em><ul>
+<li>Restricciones:<ol>
+<li>Sin restricciones.</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="importacion-de-librerias">Importación de librerías</h3>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="60%" src="https://1xltkxylmzx3z8gd647akcdvov-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/rapidminer-logo-retina.png" width="60%"/></div>
+<p><br/></p>
+<p>En este caso, no se importan librerías ya que se usa <a href="https://rapidminer.com/">Rapidminer</a>.</p>
+<h3 id="importacion-de-los-datos">Importación de los datos</h3>
+<p>Importamos el conjunto dentro de rapidminer (mediante la opción "Import Data"):</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-1.png" width="80%"/></div>
+<p><br/></p>
+<p>Una vez que importamos los datos en rapidminer, seleccionamos el identificador de persona como ID y el atributo <em>estado_solicitud</em> como label utilizando el operador <code>Set Role</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="50%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-2.png" width="50%"/></div>
+<p><br/></p>
+<p>Podemos ver, luego que ejecutamos que rapidminer nos identifica el ID y label:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-3.png" width="80%"/></div>
+<p><br/></p>
+<p>En este punto también filtramos los atributos que analizamos anteriormente y detectamos (con el conocimiento del negocio actual) que no soy relevantes para el problema en cuestión. Para esto utilizamos el operador <code>Select Attributes</code>. 
+Estos atributos son:</p>
+<ul>
+<li><em>fecha_solicitud</em></li>
+<li><em>fecha_autorizacion</em></li>
+<li><em>prestacion_desc</em></li>
+</ul>
+<p>Para realizar esto en rapidminer, seleccionamos los atributos en las propiedades del operador y luego seleccionamos la propiedad de "invert selection" para que nos deje solo el resto de los atributos:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-4.png" width="80%"/></div>
+<p><br/></p>
+<h3 id="visualizacion-de-los-datos">Visualización de los datos</h3>
+<p>Podemos visualizar los datos una vez que ejecutamos el proceso:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-6.png" width="80%"/></div>
+<p><br/></p>
+<p>Como resultado podemos ver que se tienen 24138 datos con atributos del tipo:</p>
+<ul>
+<li>Enteros <span class="math">\(\rightarrow\)</span> 2 (3 si contamos el identificador).</li>
+<li>Nominales <span class="math">\(\rightarrow\)</span>  11 (12 si contamos la variable dependiente).</li>
+</ul>
+<p>Para visualizar los datos utilizamos la pestaña "Statistics" de rapidminer que nos brinda resúmenes de los datos:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-5.png" width="80%"/></div>
+<p><br/></p>
+<h3 id="tratamiento-de-los-datos">Tratamiento de los datos</h3>
+<p>En este punto se realizan las transformaciones de los datos que se adecuan a los modelos a utilizar.</p>
+<h4 id="sanitizar-los-datos">Sanitizar los datos</h4>
+<p>La sanitización de los datos se utiliza ya que pueden haber instancias que estén mal, en relación al tipo de dato. Este análisis es más a nivel de negocio que de dato, ya que el negocio implica reglas que los datos deben cumplir.
+Primeramente, podemos observar que el atributo <em>Sexo</em> tiene una clase "U". Esta clase no debería existir, ya que estamos hablando solamente de mujeres ("F") y hombres ("M"). No estamos teniendo en cuenta los que no se han definido todavía ("U"). Por lo tanto, declaramos esta clase como un valor faltante, para luego ser tratada. 
+Lo mismo pasa con el atributo <em>prestador_departamento</em>, la clase "SIN DATO" la tomamos como un dato faltante.</p>
+<p>Para declarar estos datos como faltantes, utilizamos el operador <code>Declare Missing Value</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-7.png" width="80%"/></div>
+<p><br/></p>
+<p>En este caso, podemos ver que el atributo <em>prestacion_cod</em> debemos re-declararlo como nominal, ya que es nuestra definición del negocio. Para esto utilizamos el operador <code>Numerical to Polynominal</code>, y seleccionamos el atributo en cuestión:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-8.png" width="80%"/></div>
+<p><br/></p>
+<p>Nota (atributos duplicados): En este caso no hay atributos duplicados, ya que cada paciente es distinto, por lo que pueden haber solicitudes iguales pero pacientes distintos.</p>
+<h4 id="tratamiento-datos-faltantes">Tratamiento datos faltantes</h4>
+<p>Los datos faltantes son inadmisibles para muchos modelos. El tratamiento de los datos faltantes implica imputar un valor, eliminar dichos datos o eliminar el atributo.</p>
+<p>El atributo <em>medico_solicitante</em> tiene muchos faltantes, pero estos faltantes nos importan, ya que son los casos en donde no hubo un medico involucrado en realizar la solicitud. Es por esto, que imputamos estos atributos faltantes con una nueva clase "SIN MEDICO" para así tener una comprensión de que pasa con las solicitudes que no tienen un médico como solicitante. Esta operación la realizamos con el operador <code>Replace Missing Values</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-9.png" width="80%"/></div>
+<p><br/></p>
+<p>Esta acción nos ha generado una nueva clase que como podemos observar es la mayor, lo que implica que la mayor cantidad de solicitudes se envían sin un médico solicitante. Luego podremos ver si es importante o no el médico solicitante:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-10.png" width="80%"/></div>
+<p><br/></p>
+<p>Para el resto de los datos, como son pocos, simplemente filtramos los atributos que no tienen datos faltantes mediante el operador <code>Filter examples</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-11.png" width="80%"/></div>
+<p><br/></p>
+<p>Luego de filtrado los atributos faltantes, nos quedan <strong>24135</strong> datos (luego de los tratamientos, habían unicamente 3 faltantes).</p>
+<h4 id="tratamiento-de-outliers">Tratamiento de outliers</h4>
+<p>Hay muchos modelos en los cuales los outliers reducen la performance o inducen un sesgo indeseado. Por eso, se debe detectar y tratar los outliers para evitar este tipo de problemas.</p>
+<p>En este caso, ya hemos filtrado outliers que se sospecha que han sido mal ingresados por el sistema, sin embargo, un paso futuro sería aplicar algún algoritmo de detección de outliers para datos categóricos (como por ejemplo HBOS).</p>
+<h4 id="correlacion-de-atributos">Correlación de atributos</h4>
+<p>Hay muchos (como los modelos lineales) que la correlación de los atributos influye fuertemente en los modelos. Es por esto, que muchas veces se debe chequear la correlación de los atributos para así eliminar los que están altamente correlacionados. Previamente, convertimos los valores a numéricos utilizando un en codeado simple (asigna a cada clase un número entero). Para esto utilizamos el operador <code>Nominal to Numerical</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-12.png" width="80%"/></div>
+<p><br/></p>
+<p>El resultado nos quedaría:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-13.png" width="80%"/></div>
+<p><br/></p>
+<p>Para calcular la matriz de correlación utilizamos el operador <code>Correlation Matrix</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-14.png" width="80%"/></div>
+<p><br/></p>
+<p>Una vez que ejecutamos, obtenemos la siguiente matriz de correlación:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-15.png" width="80%"/></div>
+<p><br/></p>
+<p>Si seleccionamos las correlaciones mayores al 0.5, tenemos las siguientes:</p>
+<ul>
+<li>prestacion_cod vs area <span class="math">\(\rightarrow\)</span> 0.94934017096856</li>
+<li>prestacion_cod vs imae <span class="math">\(\rightarrow\)</span> 0.8779232011993128</li>
+<li>area vs imae <span class="math">\(\rightarrow\)</span> 0.8523444883137807</li>
+<li>medico_solicitante vs prestacion_cod <span class="math">\(\rightarrow\)</span> 0.8311839275581686</li>
+<li>tipo_prestacion vs area <span class="math">\(\rightarrow\)</span> 0.8169807912406536</li>
+<li>tipo_prestacion vs imae <span class="math">\(\rightarrow\)</span> 0.7981221562193258</li>
+<li>prestacion_cod vs tipo_prestacion <span class="math">\(\rightarrow\)</span> 0.7807664805402255</li>
+<li>medico_solicitante vs imae <span class="math">\(\rightarrow\)</span> 0.7602177011564148</li>
+</ul>
+<p>En este punto podemos ver que hay varias relaciones, que desde el negocio tienen lógica, por ejemplo, el atributo <em>prestacion_cod</em> está altamente relacionado con el atributo <em>área</em>, ya que cada prestación (acto médico o medicamento) pertenece únicamente a un área:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-16.png" width="80%"/></div>
+<p><br/></p>
+<p>En este sentido, podemos eliminar el atributo <em>area</em> (prestacion_cod nos brinda información más detallada sobre el problema). Vamos a dividir el conjunto en los datos filtrados por la correlación y los datos no filtrados.</p>
+<p>Podemos realizar la misma suposición con respecto a los otros atributos (de un modo u otro, <em>area</em>, <em>imae</em>, <em>tipo_prestacion</em> y <em>medico_solicitante</em> son generalizaciones de <em>prestacion_cod</em>).</p>
+<p>Por lo tanto, un conjunto tiene todos los atributos luego de la preparación de los datos y el otro tiene los siguientes atributos filtrados:</p>
+<ul>
+<li><em>area</em></li>
+<li><em>imae</em></li>
+<li><em>medico_solicitante</em></li>
+<li><em>tipo_prestacion</em></li>
+</ul>
+<h4 id="feature-extraction">Feature extraction</h4>
+<p>Muchas veces se puede "diseñar" un atributo que es combinación de otros atributos (lineal o no lineal) para así obtener más información. Tal vez, este atributo generado es un mejor predictor y se mejora la solución.</p>
+<p>En este caso no se ve a simple vista algún nuevo atributo que se pueda generar y que pueda mejorar la predicción.</p>
+<h4 id="transformaciones-de-los-datos">Transformaciones de los datos</h4>
+<p>En este punto se realizan las transformaciones necesarias de los datos. Las transformaciones incluyen desde transformaciones para reducir el sesgo o ajustar distribuciones de los datos hasta transformar los datos a valores numéricos o a valores categóricos. También en este punto se incluye la estandarización y normalización si se debe hacer.</p>
+<p>Podríamos realizar las transformaciones necesarias, como una logarítmica para el atributo <em>prestador_departamento</em> (hay mucha diferencia entre Montevideo y los otros departamentos), pero rapidminer, en la mayoría de sus modelos utiliza, o podemos indicarle que utilice, dichas transformaciones.</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-17.png" width="80%"/></div>
+<p><br/></p>
+<h4 id="dimension-reduction">Dimension reduction</h4>
+<p>Si las dimensiones son muy grandes, podemos aplicar técnicas que reduzcan la dimensionalidad de los atributos.</p>
+<p>Sin embargo este no es el caso, ya que luego de los análisis tenemos dos conjuntos para probar, uno con 11 atributos y otro con 7.</p>
+<h2 id="modelado">Modelado</h2>
+<hr/>
+<p>En esta sección probamos varios modelos de machine learning. Utilizamos modelos predefinidos en rapdiminer.</p>
+<p>Utilizaremos los siguientes modelos:</p>
+<ul>
+<li><code>Logistic Regression</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/logistic_regression/logistic_regression.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/logistic_regression/logistic_regression.html</a></li>
+<li><code>Linear Discriminant Analysis</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/discriminant_analysis/linear_discriminant_analysis.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/discriminant_analysis/linear_discriminant_analysis.html</a></li>
+<li><code>Decision Tree</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/parallel_decision_tree.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/parallel_decision_tree.html</a></li>
+<li><code>Naive Bayes</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/bayesian/naive_bayes.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/bayesian/naive_bayes.html</a></li>
+<li><code>k-NN</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/lazy/k_nn.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/lazy/k_nn.html</a></li>
+<li><code>SVM</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/support_vector_machines/support_vector_machine.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/support_vector_machines/support_vector_machine.html</a></li>
+<li><code>Neural Net</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/neural_nets/neural_net.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/neural_nets/neural_net.html</a></li>
+<li><code>Random Forest</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/parallel_random_forest.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/parallel_random_forest.html</a></li>
+<li><code>Gradient Boosting Trees</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/gradient_boosted_trees.html">https://docs.rapidminer.com/latest/studio/operators/modeling/predictive/trees/gradient_boosted_trees.html</a></li>
+</ul>
+<p>Y para chequear la performance de nuestros modelos utilizamos:</p>
+<ul>
+<li><code>Apply Model</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/scoring/apply_model.html">https://docs.rapidminer.com/latest/studio/operators/scoring/apply_model.html</a></li>
+<li><code>Cross Validation</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/validation/cross_validation.html">https://docs.rapidminer.com/latest/studio/operators/validation/cross_validation.html</a></li>
+<li><code>Performance</code> <span class="math">\(\Rightarrow\)</span> <a href="https://docs.rapidminer.com/latest/studio/operators/validation/performance/performance.html">https://docs.rapidminer.com/latest/studio/operators/validation/performance/performance.html</a></li>
+</ul>
+<p>Utilizaremos <code>Optimize Parameters (Evolutionary)</code> <a href="https://docs.rapidminer.com/latest/studio/operators/modeling/optimization/parameters/optimize_parameters_evolutionary.html">https://docs.rapidminer.com/latest/studio/operators/modeling/optimization/parameters/optimize_parameters_evolutionary.html</a> para la optimización del modelo basado en algoritmos evolutivos.</p>
+<h3 id="preparacion-del-modelado">Preparación del modelado</h3>
+<p>Los conjuntos a utilizar en el modelado son dos, uno con los atributos correlacionados y otro sin los atributos correlacionados.</p>
+<h3 id="entrenamiento-de-los-modelos">Entrenamiento de los modelos</h3>
+<p>En esta sección se entrenan los modelos especificados anteriormente para ver cuál es el que realiza la mejor predicción.</p>
+<h4 id="logistic-regression">Logistic Regression</h4>
+<p>Entrenamiento utilizando regresión logística:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-18.png" width="80%"/></div>
+<p><br/></p>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-19.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-20.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>93.42%</strong>.</p>
+<h4 id="linear-discriminant-analysis">Linear Discriminant Analysis</h4>
+<p>En este caso, debemos convertir los valores a números utilizando "dummy encoding", ya que es un requerimiento del algoritmo (no maneja valores nominales y rapidminer tampoco los convierte automáticamente). Para esto utilizamos el operador <code>Nominal to Numerical</code> con la propiedad <em>dummy coding</em></p>
+<p>Dentro del proceso de validación cruzada, convertimos los datos a números, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-21.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-22.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>89.77%</strong>.</p>
+<p>En este caso podemos ver que el modelo tiene los siguientes parámetros:</p>
+<p><em>Linear Discriminant Model</em>
+<strong>Apriori probabilities:</strong>
+- AUTORIZADO <span class="math">\(\Rightarrow\)</span> 0.8977
+- NO AUTORIZADO <span class="math">\(\Rightarrow\)</span> 0.1023</p>
+<p>El modelo nos da que todos los valores deben ser clasificados como AUTORIZADO, ya que la prioridad Apriori es muy superior que la NO AUTORIZADO. Esto se debe a que la prioridad Apriori es muy alta en comparación con la de NO AUTORIZADO y las probabilidades condicionales no son lo suficientemente grandes para que algún ejemplo se clasifique como NO AUTORIZADO.</p>
+<h4 id="decision-tree">Decision Tree</h4>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-23.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-24.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>92.30%</strong>.</p>
+<h4 id="naive-bayes">Naive Bayes</h4>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-25.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-26.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>91.72%</strong>.</p>
+<h4 id="k-nn">k-NN</h4>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-27.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-28.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>88.08%</strong>.</p>
+<h4 id="svm">SVM</h4>
+<p>Dentro del proceso de validación cruzada, convertimos los valores a numéricos, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-29.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-36.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>93.45%</strong>.</p>
+<h4 id="neural-net">Neural Net</h4>
+<p>Dentro del proceso de validación cruzada, convertimos los valores a numéricos, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-30.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-37.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>93.38%</strong>.</p>
+<h4 id="random-forest">Random Forest</h4>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-31.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-38.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>89.77%</strong>.</p>
+<h4 id="gradient-boosting-trees">Gradient Boosting Trees</h4>
+<p>Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-32.png" width="80%"/></div>
+<p><br/></p>
+<p>Los parámetros utilizados son los estándar de rapidminer.
+Una vez entrenamos el modelo, obtenemos los siguientes resultados:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-39.png" width="80%"/></div>
+<p><br/></p>
+<p>En resumen tenemos una precisión de un <strong>92.27%</strong>.</p>
+<h3 id="comparacion-de-modelos">Comparación de modelos</h3>
+<p>Una vez que tenemos las precisiones de los modelos, podemos comparar las performance de los modelos:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-33.png" width="80%"/></div>
+<p><br/></p>
+<p>Para el caso de los modelos con los atributos correlaciones filtrados:</p>
+<table class="table-striped table table-hover">
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SVM</td>
+<td>93.45</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>93.42</td>
+</tr>
+<tr>
+<td>Neural Net</td>
+<td>93.38</td>
+</tr>
+<tr>
+<td>Decision Tree</td>
+<td>92.30</td>
+</tr>
+<tr>
+<td>Gradient Boosting Tree</td>
+<td>92.27</td>
+</tr>
+<tr>
+<td>Naive Bayes</td>
+<td>91.72</td>
+</tr>
+<tr>
+<td>LDA</td>
+<td>89.77</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>89.77</td>
+</tr>
+<tr>
+<td>k-NN</td>
+<td>88.08</td>
+</tr>
+<tr>
+<td><br/></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para el caso de los modelos con los atributos correlaciones no filtrados:</p>
+<table class="table-striped table table-hover">
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Performance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SVM</td>
+<td>92.45</td>
+</tr>
+<tr>
+<td>Logistic Regression</td>
+<td>92.42</td>
+</tr>
+<tr>
+<td>Neural Net</td>
+<td>91.38</td>
+</tr>
+<tr>
+<td>Decision Tree</td>
+<td>91.30</td>
+</tr>
+<tr>
+<td>Gradient Boosting Tree</td>
+<td>90.27</td>
+</tr>
+<tr>
+<td>LDA</td>
+<td>89.77</td>
+</tr>
+<tr>
+<td>Naive Bayes</td>
+<td>89.72</td>
+</tr>
+<tr>
+<td>Random Forest</td>
+<td>85.77</td>
+</tr>
+<tr>
+<td>k-NN</td>
+<td>81.08</td>
+</tr>
+<tr>
+<td><br/></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Podemos ver que el algoritmo que nos brinda la mejor precisión es SVM (Support Vector Machine), y que filtrando los atributos correlacionados nos brinda una mejor predicción.</p>
+<h3 id="feature-selection">Feature selection</h3>
+<p>Una vez que tenemos el modelo que nos de la mejor perdición, realizamos la selección de atributos utilizando algoritmos evolutivos para observar si se mejora en la predicción o no. En si, esto se debería realizar para cada algoritmo, y luego compararlos, pero consume mucho tiempo este tipo de procesos.</p>
+<p>En este caso hay muy pocos atributos, por lo que no es necesaria esta etapa. Sin embargo, probaremos aplicar un algoritmo de reducción de dimensionalidad, aunque no es necesario.</p>
+<ul>
+<li>PCA:
+El Análisis de Componentes Principales es una técnica estadística para describir el conjunto de datos en términos de nuevas variables no correlacionados (componentes principales). Los componentes se ordenan por la cantidad de varianza original que describen, por lo que ésta técnica es útil para reducir la dimensionalidad del conjunto.</li>
+</ul>
+<p>En rapdiminer el operador utilizado para realizar un Análisis de Componentes Principales es <code>Principal Component Analysis</code> <a href="https://docs.rapidminer.com/latest/studio/operators/cleansing/dimensionality_reduction/principal_component_analysis.html">https://docs.rapidminer.com/latest/studio/operators/cleansing/dimensionality_reduction/principal_component_analysis.html</a>. 
+PCA tiene dos requerimientos importantes:</p>
+<ul>
+<li>Atributos numéricos.</li>
+<li>Estandarización.</li>
+<li>También hay que tener en consideración que el ruido extremo puede afectar al algoritmo.</li>
+</ul>
+<p>Lo correcto para utilizar PCA es realizar todas las transformaciones dentro del proceso de validación cruzada:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-40.png" width="80%"/></div>
+<p><br/></p>
+<p>Si utilizamos un límite de varianza del 95% (esto es perder un 5% de la información), vemos que PCA nos reduce la dimensión en 1. Esto no es mucho, ya que tenemos pocos atributos y no tiene mucho sentido aplicar PCA, pero la reducción de 1 atributo no ha hecho bajar la performance de nuestro modelo, pero si ha bajado la complejidad de los datos lo que ha permitido entrenar más rápido el modelo:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-41.png" width="80%"/></div>
+<p><br/></p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-42.png" width="80%"/></div>
+<p><br/></p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-43.png" width="80%"/></div>
+<p><br/></p>
+<p>Otro dato importante, es que mirando la mantriz de varianza acumulada, podemos ver que la gráfica es casi lineal, lo que implica saltos lineales en la varianza, por lo tanto es un indicio de que hemos seleccionado bien los atributos (todos aportan información al problema):</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-44.png" width="80%"/></div>
+<p><br/></p>
+<h3 id="optimizacion">Optimización</h3>
+<p>En esta sección se optimiza el modelo para utilizarlo en la puesta a producción.</p>
+<p>Para optimizar nuestro modelo (elegimos como modelo la Regression Logística, ya que tiene una performance similar a SVM y tiene la ventaja de ser rápido y descriptivo) utilizamos una optimización basada en algoritmos elvolutivos.
+Para esto rapidminer nos brinda el operador <code>Optimize Parameters (Evolutionary)</code>:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="20%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-45.png" width="20%"/></div>
+<p><br/></p>
+<p>Dentro de dicho operador colocamos nuestro modelo de validación cruzada:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-46.png" width="80%"/></div>
+<p><br/></p>
+<p>Luego, en las propiedades del operador de optimización, seleccionamos los parámetros a optimizar. Para el caso de la regresión logística, optimizaremos los siguientes parámetros:</p>
+<ul>
+<li>Lambda (controla la regularización).</li>
+<li>Alhpa (controla las penalidades entre la regularización L1 y L2).</li>
+<li>Stopping tolerance (criterio de parada si no hay mejoras en el modelo).</li>
+</ul>
+<p>Una vez ejecutado el modelo, obtenemos el siguiente resultado:</p>
+<p><strong>ParameterSet:</strong></p>
+<div class="highlight"><pre><span></span>Parameter set:
+Performance: 
+PerformanceVector [
+    -----accuracy: 93.44% +/- 0.18% (micro average: 93.44%)
+
+    ConfusionMatrix:
+        True:           AUTORIZADO  NO AUTORIZADO
+        AUTORIZADO:     21657       1576
+        NO AUTORIZADO:  8           894
+        -----precision: 99.12% +/- 0.66% (micro average: 99.11%) (positive class: NO AUTORIZADO)
+
+    ConfusionMatrix:
+        True:           AUTORIZADO  NO AUTORIZADO
+        AUTORIZADO:     21657       1576
+        NO AUTORIZADO:  8           894
+        -----recall: 36.19% +/- 1.78% (micro average: 36.19%) (positive class: NO AUTORIZADO)
+
+    ConfusionMatrix:
+        True:           AUTORIZADO  NO AUTORIZADO
+        AUTORIZADO:     21657       1576
+        NO AUTORIZADO:  8           894
+        -----AUC (optimistic): 0.847 +/- 0.011 (micro average: 0.847) (positive class: NO AUTORIZADO)
+        -----AUC: 0.847 +/- 0.011 (micro average: 0.847) (positive class: NO AUTORIZADO)
+        -----AUC (pessimistic): 0.847 +/- 0.011 (micro average: 0.847) (positive class: NO AUTORIZADO)
+    ]
+
+Logistic Regression Algorithm (3).lambda    = 1.6837864075475724E308
+
+Logistic Regression Algorithm (3).stopping_tolerance    = 1.74105289675993E308
+
+Logistic Regression Algorithm (3).alpha = 0.5530535233935917
+</pre></div>
+<p>Como podemos ver, ha mejorado muy poco la performance del modelo, pero ha mejorado. </p>
+<h2 id="evaluacion">Evaluación</h2>
+<hr/>
+<p>La evaluación del modelo lo podemos hacer gracias a la potencia de los árboles de decisión y la regresión logística. Éstos permiten explicar porque se toma la decisión adecuada para cada caso.</p>
+<ul>
+<li>Árbol de decisión:
+Para el análisis de las decisiones ejecutamos creamos una validación cruzada con un Arbol de decisión como modelo. La diferencia es que en los parámetros del modelos, seteamos que la máxima profundidad del árbol sea 5, ya que esto hace que sea más entendible:</li>
+</ul>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-34.png" width="80%"/></div>
+<p><br/></p>
+<p>El árbol entrenado, de forma radial, es el siguiente:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-35.png" width="80%"/></div>
+<p><br/></p>
+<p>Está expresado de forma radial, pero el concepto es el mismo. Fue expresado de esta forma por el motivo de que el atributo que mejor divide a los ejemplos es <em>prestacion_cod</em>, y éste atributo tiene muchas categorías, ya que cada prestación es un tipo de enfermedad.
+Algunas reglas que podemos obtener del análisis son:</p>
+<ul>
+<li>Para la prestación 801 no se ha autorizado ninguna petición, sin importar el departamento, médico, etc. La prestación 801 corresponde a un trasplante de pulmón. Se supone que la solicitud se realiza ya cuando hay un pulmón "disponible".</li>
+<li>Por otro lado, la prestación 5012, que implica el inicio de un tratamiento de tricoleucemina siempre se ha aprobado.</li>
+<li>Otra prestación que no se ha autorizado nunca es la 2201, que implica al acto medico de RHA (Reproducción Humana Asistida).</li>
+<li>Sin embargo, la prestación 302 tiene un índice de casi 100% de aprobación. Esta prestación corresponde a actos cardíacos, más específicamente a "PCI-ATCP c/cateterismo izq".</li>
+<li>Otro dato importante, es que las prestaciones 1601, 1501, 1602, 1701 y 1503 todas tienen un 100% de aprobación, aunque se producen muy pocos casos en nuestro país. Hubieron exactamente 296 de estas solicitudes. Estas prestaciones incluyen actos médicos a quemados entre otros.</li>
+<li>El atributo <em>prestacion_cod</em> permite separar la mayoría de los ejemplos, por lo que vemos que lo importante es la prestación a brindar. Sin embargo, hay algunos casos, como por ejemplo la prestación 5003, que corresponde a tratamientos por Hepatitis C, tiene un porcentaje de autorización del 100% para mujeres, aunque no así para hombres (aunque la proporción es muy pequeña como para sacar alguna conclusión consistente, solo 20 registros se clasificaron así).</li>
+</ul>
+<h2 id="puesta-en-produccion">Puesta en producción</h2>
+<hr/>
+<p>El pipeline completo se puede ver en la siguiente imagen:</p>
+<div style="text-align:center"><img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-47.png" width="80%"/></div>
+<p><br/></p>
+<p><strong>Mejoras futuras <span class="math">\(\Rightarrow\)</span></strong> Se pueden plantear muchas mejoras futuras, pero algunas recomendadas son las siguientes:</p>
+<ul>
+<li>Realizar el mismo análisis de la evaluación pero incluir los atributos correlacionados, capaz obtenemos alguna diferencia en la evaluación del modelo.</li>
+<li>Intentar obtener más datos de los pacientes.</li>
+<li>En el mismo repositorio se encuentran datos económicos de las prestaciones, una mejora importantes sería incorporar estos datos para saber si la variable económica es un hito importante. Si por ejemplo, la prestación 801 es una de las más caras, podemos obtener un porque tiene un 100% de no autorización.</li>
+<li>Obtener las solicitudes del año 2017 para poder realizar una validación del modelo.</li>
+<li>Utilizar rapidminer server para subir el modelo a la nube y realizar consultas para lograr predicciones.</li>
+</ul>
+<p>Podemos obtener el proceso entero en el siguiente link:</p>
+<ul>
+<li><a href="https://brunomaso1.github.io/blog/others/analisis-solicitudes-medicas.rmp">Rapidminer-Process</a></li>
+</ul>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </div>
+  </article>
+  <hr>
+  <div id="disqus_thread"></div>
+  <script>
+    var disqus_config = function() {
+      this.page.url = 'https://brunomaso1.github.io/blog/posts/analisis-solicitudes-medicas.html';
+      this.page.identifier = 'analisis-solicitudes-medicas';
+    };
+    (function() {
+      var d = document;
+      var s = d.createElement('script');
+      s.src = '//brunomaso1.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+  <noscript class="text-muted">
+    Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+  </noscript>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+<div class="row">
+  <ul class="col-sm-6 list-inline">
+    <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/archives.html">Archivos</a></li>
+    <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/categories.html">Categorias</a></li>
+      <li class="list-inline-item"><a href="https://brunomaso1.github.io/blog/tags.html">Tags</a></li>
+  </ul>
+  <p class="col-sm-6 text-sm-right text-muted">
+    Generated by <a href="https://github.com/getpelican/pelican" target="_blank">Pelican</a>
+    / <a href="https://github.com/nairobilug/pelican-alchemy" target="_blank">&#x2728;</a>
+  </p>
+</div>    </div>
+  </footer>
+  
+			<script src="https://brunomaso1.github.io/blog/js/tocConverter.js"></script>
+</body>
+
+</html>

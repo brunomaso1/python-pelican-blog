@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Descubriendo el mundo tecnológico - General Programación</title><link href="https://brunomaso1.github.io/blog/" rel="alternate"></link><link href="https://brunomaso1.github.io/blog/feeds/general-programacion.atom.xml" rel="self"></link><id>https://brunomaso1.github.io/blog/</id><updated>2019-01-20T12:00:00-03:00</updated><entry><title>HOJA DE TRUCOS Y REFERENCIAS</title><link href="https://brunomaso1.github.io/blog/posts/referencias-y-templates.html" rel="alternate"></link><published>2019-01-20T12:00:00-03:00</published><updated>2019-01-20T12:00:00-03:00</updated><author><name>Bruno Masoller</name></author><id>tag:brunomaso1.github.io,2019-01-20:/blog/posts/referencias-y-templates.html</id><summary type="html">&lt;p&gt;Trucos y referencias con recursos en general.&lt;/p&gt;</summary><content type="html">&lt;div class="toc"&gt;&lt;span class="toctitle"&gt;Tabla de contenido:&lt;/span&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#markdown"&gt;Markdown&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#latex"&gt;LaTeX&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#pandas"&gt;Pandas&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#categorical-variables"&gt;Categorical variables&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#puesta-en-produccion"&gt;Puesta en producción&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;h2 id="markdown"&gt;Markdown&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet"&gt;Markdown Cheatsheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="latex"&gt;LaTeX&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics"&gt;LaTeX Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.codecogs.com/latex/eqneditor.php"&gt;LaTeX Editor&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="pandas"&gt;Pandas&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://www.dataquest.io/blog/pandas-cheat-sheet/"&gt;Pandas Cheatsheet&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="categorical-variables"&gt;Categorical variables&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://pbpython.com/categorical-encoding.html"&gt;Enconding&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="puesta-en-produccion"&gt;Puesta en producción&lt;/h2&gt;
+&lt;hr/&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://datascience.com.co/creating-an-api-using-scikit-learn-aws-lambda-s3-and-amazon-api-gateway-d9d10317e38d"&gt;Puesta en producción&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Referencias"></category><category term="General"></category><category term="Programación"></category><category term="Templates"></category></entry></feed>
