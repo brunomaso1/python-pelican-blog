@@ -66,8 +66,6 @@ SOCIAL = (
 	('twitter', 'https://twitter.com/brunomaso11'),
 )
 
-DISQUS_SITENAME = 'brunomaso1'
-
 GITHUB_URL = 'https://github.com/brunomaso1'
 TWITTER_USERNAME = '@brunomaso11'
 
@@ -85,6 +83,8 @@ MARKDOWN = {
 	},
 	'output_format': 'html5',
 }
+
+SEARCH_BOX = True
 
 # Theme settings --------------------------------------------------------------
 

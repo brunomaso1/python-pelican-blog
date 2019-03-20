@@ -154,15 +154,15 @@ En este caso, no se importan librerías ya que se usa [Rapidminer](https://rapid
 
 Importamos el conjunto dentro de rapidminer (mediante la opción "Import Data"):
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-1.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-1.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Una vez que importamos los datos en rapidminer, seleccionamos el identificador de persona como ID y el atributo *estado_solicitud* como label utilizando el operador ```Set Role```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-2.png" alt="drawing" width="50%" height="50%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-2.png" alt="drawing" width="50%" height="50%"/></div><br/>
 
 Podemos ver, luego que ejecutamos que rapidminer nos identifica el ID y label:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-3.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-3.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En este punto también filtramos los atributos que analizamos anteriormente y detectamos (con el conocimiento del negocio actual) que no soy relevantes para el problema en cuestión. Para esto utilizamos el operador ```Select Attributes```. 
 Estos atributos son:
@@ -173,13 +173,13 @@ Estos atributos son:
 
 Para realizar esto en rapidminer, seleccionamos los atributos en las propiedades del operador y luego seleccionamos la propiedad de "invert selection" para que nos deje solo el resto de los atributos:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-4.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-4.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 ### Visualización de los datos
 
 Podemos visualizar los datos una vez que ejecutamos el proceso:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-6.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-6.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Como resultado podemos ver que se tienen 24138 datos con atributos del tipo:
 
@@ -188,7 +188,7 @@ Como resultado podemos ver que se tienen 24138 datos con atributos del tipo:
 
 Para visualizar los datos utilizamos la pestaña "Statistics" de rapidminer que nos brinda resúmenes de los datos:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-5.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-5.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 ### Tratamiento de los datos
 
@@ -202,11 +202,11 @@ Lo mismo pasa con el atributo *prestador_departamento*, la clase "SIN DATO" la t
 
 Para declarar estos datos como faltantes, utilizamos el operador ```Declare Missing Value```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-7.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-7.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En este caso, podemos ver que el atributo *prestacion_cod* debemos re-declararlo como nominal, ya que es nuestra definición del negocio. Para esto utilizamos el operador ```Numerical to Polynominal```, y seleccionamos el atributo en cuestión:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-8.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-8.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Nota (atributos duplicados): En este caso no hay atributos duplicados, ya que cada paciente es distinto, por lo que pueden haber solicitudes iguales pero pacientes distintos.
 
@@ -216,15 +216,15 @@ Los datos faltantes son inadmisibles para muchos modelos. El tratamiento de los 
 
 El atributo *medico_solicitante* tiene muchos faltantes, pero estos faltantes nos importan, ya que son los casos en donde no hubo un medico involucrado en realizar la solicitud. Es por esto, que imputamos estos atributos faltantes con una nueva clase "SIN MEDICO" para así tener una comprensión de que pasa con las solicitudes que no tienen un médico como solicitante. Esta operación la realizamos con el operador ```Replace Missing Values```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-9.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-9.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Esta acción nos ha generado una nueva clase que como podemos observar es la mayor, lo que implica que la mayor cantidad de solicitudes se envían sin un médico solicitante. Luego podremos ver si es importante o no el médico solicitante:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-10.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-10.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Para el resto de los datos, como son pocos, simplemente filtramos los atributos que no tienen datos faltantes mediante el operador ```Filter examples```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-11.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-11.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Luego de filtrado los atributos faltantes, nos quedan **24135** datos (luego de los tratamientos, habían unicamente 3 faltantes).
 
@@ -239,19 +239,19 @@ En este caso, ya hemos filtrado outliers que se sospecha que han sido mal ingres
 Hay muchos (como los modelos lineales) que la correlación de los atributos influye fuertemente en los modelos. Es por esto, que muchas veces se debe chequear la correlación de los atributos para así eliminar los que están altamente correlacionados. Previamente, convertimos los valores a numéricos utilizando un en codeado simple (asigna a cada clase un número entero). Para esto utilizamos el operador ```Nominal to Numerical```:
 
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-12.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-12.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 El resultado nos quedaría:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-13.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-13.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Para calcular la matriz de correlación utilizamos el operador ```Correlation Matrix```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-14.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-14.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Una vez que ejecutamos, obtenemos la siguiente matriz de correlación:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-15.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-15.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Si seleccionamos las correlaciones mayores al 0.5, tenemos las siguientes:
 
@@ -266,7 +266,7 @@ Si seleccionamos las correlaciones mayores al 0.5, tenemos las siguientes:
 
 En este punto podemos ver que hay varias relaciones, que desde el negocio tienen lógica, por ejemplo, el atributo *prestacion_cod* está altamente relacionado con el atributo *área*, ya que cada prestación (acto médico o medicamento) pertenece únicamente a un área:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-16.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-16.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En este sentido, podemos eliminar el atributo *area* (prestacion_cod nos brinda información más detallada sobre el problema). Vamos a dividir el conjunto en los datos filtrados por la correlación y los datos no filtrados.
 
@@ -291,7 +291,7 @@ En este punto se realizan las transformaciones necesarias de los datos. Las tran
 
 Podríamos realizar las transformaciones necesarias, como una logarítmica para el atributo *prestador_departamento* (hay mucha diferencia entre Montevideo y los otros departamentos), pero rapidminer, en la mayoría de sus modelos utiliza, o podemos indicarle que utilice, dichas transformaciones.
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-17.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-17.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 #### Dimension reduction
 
@@ -337,16 +337,16 @@ En esta sección se entrenan los modelos especificados anteriormente para ver cu
 
 Entrenamiento utilizando regresión logística:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-18.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-18.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-19.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-19.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-20.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-20.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **93.42%**.
 
@@ -356,12 +356,12 @@ En este caso, debemos convertir los valores a números utilizando "dummy encodin
 
 Dentro del proceso de validación cruzada, convertimos los datos a números, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-21.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-21.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-22.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-22.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **89.77%**.
 
@@ -378,12 +378,12 @@ El modelo nos da que todos los valores deben ser clasificados como AUTORIZADO, y
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-23.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-23.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-24.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-24.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **92.30%**.
 
@@ -391,12 +391,12 @@ En resumen tenemos una precisión de un **92.30%**.
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-25.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-25.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-26.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-26.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **91.72%**.
 
@@ -404,12 +404,12 @@ En resumen tenemos una precisión de un **91.72%**.
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-27.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-27.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-28.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-28.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **88.08%**.
 
@@ -417,12 +417,12 @@ En resumen tenemos una precisión de un **88.08%**.
 
 Dentro del proceso de validación cruzada, convertimos los valores a numéricos, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-29.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-29.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-36.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-36.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **93.45%**.
 
@@ -430,12 +430,12 @@ En resumen tenemos una precisión de un **93.45%**.
 
 Dentro del proceso de validación cruzada, convertimos los valores a numéricos, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-30.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-30.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-37.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-37.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **93.38%**.
 
@@ -443,12 +443,12 @@ En resumen tenemos una precisión de un **93.38%**.
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-31.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-31.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-38.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-38.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **89.77%**.
 
@@ -456,12 +456,12 @@ En resumen tenemos una precisión de un **89.77%**.
 
 Dentro del proceso de validación cruzada, colocamos el modelo y los operadores para chequear el performance:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-32.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-32.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Los parámetros utilizados son los estándar de rapidminer.
 Una vez entrenamos el modelo, obtenemos los siguientes resultados:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-39.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-39.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 En resumen tenemos una precisión de un **92.27%**.
 
@@ -469,7 +469,7 @@ En resumen tenemos una precisión de un **92.27%**.
 
 Una vez que tenemos las precisiones de los modelos, podemos comparar las performance de los modelos:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-33.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-33.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Para el caso de los modelos con los atributos correlaciones filtrados:
 
@@ -521,19 +521,19 @@ PCA tiene dos requerimientos importantes:
 
 Lo correcto para utilizar PCA es realizar todas las transformaciones dentro del proceso de validación cruzada:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-40.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-40.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Si utilizamos un límite de varianza del 95% (esto es perder un 5% de la información), vemos que PCA nos reduce la dimensión en 1. Esto no es mucho, ya que tenemos pocos atributos y no tiene mucho sentido aplicar PCA, pero la reducción de 1 atributo no ha hecho bajar la performance de nuestro modelo, pero si ha bajado la complejidad de los datos lo que ha permitido entrenar más rápido el modelo:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-41.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-41.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-42.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-42.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-43.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-43.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Otro dato importante, es que mirando la mantriz de varianza acumulada, podemos ver que la gráfica es casi lineal, lo que implica saltos lineales en la varianza, por lo tanto es un indicio de que hemos seleccionado bien los atributos (todos aportan información al problema):
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-44.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-44.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 ### Optimización
 
@@ -542,11 +542,11 @@ En esta sección se optimiza el modelo para utilizarlo en la puesta a producció
 Para optimizar nuestro modelo (elegimos como modelo la Regression Logística, ya que tiene una performance similar a SVM y tiene la ventaja de ser rápido y descriptivo) utilizamos una optimización basada en algoritmos elvolutivos.
 Para esto rapidminer nos brinda el operador ```Optimize Parameters (Evolutionary)```:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-45.png" alt="drawing" width="20%" height="20%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-45.png" alt="drawing" width="20%" height="20%"/></div><br/>
 
 Dentro de dicho operador colocamos nuestro modelo de validación cruzada:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-46.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-46.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Luego, en las propiedades del operador de optimización, seleccionamos los parámetros a optimizar. Para el caso de la regresión logística, optimizaremos los siguientes parámetros:
 
@@ -601,11 +601,11 @@ La evaluación del modelo lo podemos hacer gracias a la potencia de los árboles
 - Árbol de decisión:
 Para el análisis de las decisiones ejecutamos creamos una validación cruzada con un Arbol de decisión como modelo. La diferencia es que en los parámetros del modelos, seteamos que la máxima profundidad del árbol sea 5, ya que esto hace que sea más entendible:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-34.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-34.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 El árbol entrenado, de forma radial, es el siguiente:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-35.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-35.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 Está expresado de forma radial, pero el concepto es el mismo. Fue expresado de esta forma por el motivo de que el atributo que mejor divide a los ejemplos es *prestacion_cod*, y éste atributo tiene muchas categorías, ya que cada prestación es un tipo de enfermedad.
 Algunas reglas que podemos obtener del análisis son:
@@ -622,7 +622,7 @@ Algunas reglas que podemos obtener del análisis son:
 
 El pipeline completo se puede ver en la siguiente imagen:
 
-<div style="text-align:center"><img src="{filename}/images/analisis-solicitudes-medicas-47.png" alt="drawing" width="80%" height="80%"/></div><br/>
+<div style="text-align:center"><img src="{static}/images/analisis-solicitudes-medicas-47.png" alt="drawing" width="80%" height="80%"/></div><br/>
 
 **Mejoras futuras $\Rightarrow$** Se pueden plantear muchas mejoras futuras, pero algunas recomendadas son las siguientes:
 
@@ -634,4 +634,4 @@ El pipeline completo se puede ver en la siguiente imagen:
 
 Podemos obtener el proceso entero en el siguiente link:
 
-- [Rapidminer-Process]({filename}/others/analisis-solicitudes-medicas.rmp)
+- [Rapidminer-Process]({static}/others/analisis-solicitudes-medicas.rmp)

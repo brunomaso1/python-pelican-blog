@@ -10,7 +10,7 @@ Status: published
 
 [TOC]
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-1.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-1.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Montevideo es la quinta ciudad “más inteligente” de Latinoamérica[^1], y sin embargo, cada vez que voy a facultad tengo aproximadamente 30 minutos de ómnibus (un trayecto de unos 3 kilómetros, lo que da 10 minutos por kilómetro o su equivalente a 6 kmh).
 
@@ -25,7 +25,7 @@ Más allá de la definición citada, hoy en día no hay un consenso sobre la def
 
 Un ejemplo de aplicación de la frase anterior en Smart Cities, sería resolver el problema de congestión en Av. 18 de Julio a las 18 horas, agregando un carril más para los autos (esto generaría peores tiempos, ya que los cambios de carriles causan aún más congestión), o colocar un corredor con la misma intención[^4]. Una mejor solución requiere pensar de forma diferente: ¿Necesitamos tener un vehículo de nuestra propiedad? ¿Autos autónomos disminuirían la congestión, o en su caso la eliminarían? ¿Por qué no utilizar autos a demanda? [^5]
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-2.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-2.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Dentro de 30 años el mundo será totalmente diferente. El concepto de Smart City se unificará en la mayoría de los rincones del planeta. Edificios inteligentes de alta tecnología serán frecuentes en las Smart Cities[^6], “super-grids” proveen energía a continentes[^7], singularidad[^8], entre otros.
 
@@ -33,7 +33,7 @@ En el año 2040, la conectividad global alcanzará a 125 mil millones de disposi
 
 En un futuro no muy lejano, ya para el año 2030, Alemania habrá emitido una prohibición para vender autos que funcionen con combustibles fósiles[^11], mejorando ampliamente el impacto de los humanos en el calentamiento global. También se prevé que el costo de los paneles solares se reducirá a ½ dólar por watt[^12] (actualmente están en unos 3 dólares por watt[^13]), mejorando la economía de energías renovables (sin hablar de la energía que se puede obtener de la fusión nuclear y sus ventajas[^14][^15]).
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-3.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-3.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Dejando la futurología de lado, con una población de 8.6 mil millones[^16] (8.850.766.000) estimada para el 2030, ya habrán surgido varios problemas debido a la limitación (o mejor dicho, ¿mala distribución?) de los recursos. ¿Existe algún proyecto actual que nos ponga en línea con el futuro referido, y subsane los problemas que tenemos actualmente en las ciudades?
 
@@ -41,17 +41,17 @@ Dejando la futurología de lado, con una población de 8.6 mil millones[^16] (8.
 
 TVP[^17] es la sigla de “El Proyecto Venus” (The Venus Project, en inglés). Venus por el lugar donde fue concebido, nada que ver con el planeta homónimo. TVP es una organización que propone un plan de acción factible para el cambio social, que trabaja hacia una civilización global, pacífica y sostenible. Describe una alternativa para luchar hacia donde los derechos humanos ya no son proclamaciones en papel sino una forma de vida[^18]. Habla del rediseño de la cultura que se puede lograr con la tecnología actual (aplicar la tecnología a los problemas de la sociedad), en otras palabras, diseñar el futuro, no ir resolviendo los problemas actuales a medida que surgen. Se enfoca en un concepto de Economía Basada en Recursos[^19] y la aplicación del método científico a la sociedad[^20].
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-4.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-4.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Podría decirse que la ideología del TVP no es totalmente concreta aún, y que en este momento es solamente una forma de mostrar un mundo futurístico de una economía óptima y políticas a escalas mundiales. Sin embargo, se están realizando proyectos para cambiar esa visión sobre el sentido utópico de los diseños[^21]. Más allá del futurismo, hoy en día tenemos la tecnología necesaria para crear una Smart City realmente sostenible. Un ejemplo de ello es lo que está haciendo Google en Canadá.
 
 ## Toronto
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-5.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-5.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Sidewalk Labs[^22] (perteneciente a Alphabet, empresa madre de Google) es una empresa que intenta combinar diseños urbanos centrados en personas con la última tecnología disponible para brindar sostenibilidad, asequibilidad, movilidad y oportunidad económica en las ciudades. Sidewalk Labs ha empezado recientemente el proyecto[^23] [^24] “Sidewalk Toronto”[^25], en asociación con “Waterfront Toronto”, con el objetivo de llevar su visión a un distrito industrial (Quayside) de Toronto, Canadá. Es realmente interesante la visión planeada de Sidewalk Labs para el distrito referido[^26], pero más interesante aún es la integración de toda la comunidad, para realmente resolver los problemas de los torontonianos[^27]. Tienen un plan diseñado en el cual existen 13 actividades de integración[^28], entre charlas públicas, paneles, mesas redondas, charlas con expertos, e inclusive un laboratorio[^29] donde muestran la tecnología a utilizar en el diseño e implementación de la ciudad[^30]. Además, tienen toda su documentación abierta a la comunidad[^31].
 
-<div style="text-align:center"><img src="{filename}/images/un-panorama-a-las-ciudades-inteligentes-6.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/un-panorama-a-las-ciudades-inteligentes-6.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 Dentro de su plan, los diseños e implementaciones que se destacan son las redes de mensajería subterráneas (el transporte de paquetes será totalmente subterráneo para así evitar la congestión del tráfico), calles que se ajustan según la demanda (se utilizan luces LEDs para señalizar los carriles, paso de personas, etc.), electricidad digital[^32] (mejora la eficiencia energética[^33]) y por supuesto, una flota de taxis autónomos compartidos, probablemente brindados por Waymo[^34], otra empresa hermana de Google. 
 

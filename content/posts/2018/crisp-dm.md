@@ -12,7 +12,7 @@ JavaScripts: tocConverter.js
 ## CRISP-DM
 ---
 <small><a href="https://inseaddataanalytics.github.io/INSEADAnalytics/CRISP_DM.pdf">CRISP-DM 2.0</a></small>
-<div style="text-align:center"><img src="{filename}/images/crisp-dm-1.png" alt="drawing" width="35%" height="35%"/></div></br>
+<div style="text-align:center"><img src="{static}/images/crisp-dm-1.png" alt="drawing" width="35%" height="35%"/></div></br>
 
 El proceso CRISP-DM, es un modelo estándar abierto que describe un enfoque para problemas en el contexto de "data mining". Es uno de los más usados. 
 Este post contiene ejemplos de aprendizaje automático ordenados según una implementación del modelo CRISP-DM.
