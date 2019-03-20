@@ -445,7 +445,7 @@ Una vez entrenamos el modelo, obtenemos los siguientes resultados:&lt;/p&gt;
 &lt;div style="text-align:center"&gt;&lt;img alt="drawing" class="img-fluid" height="80%" src="https://brunomaso1.github.io/blog/images/analisis-solicitudes-medicas-33.png" width="80%"/&gt;&lt;/div&gt;
 &lt;p&gt;&lt;br/&gt;&lt;/p&gt;
 &lt;p&gt;Para el caso de los modelos con los atributos correlaciones filtrados:&lt;/p&gt;
-&lt;table class="table-striped table-hover table"&gt;
+&lt;table class="table table-striped table-hover"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;Modelo&lt;/th&gt;
@@ -496,7 +496,7 @@ Una vez entrenamos el modelo, obtenemos los siguientes resultados:&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Para el caso de los modelos con los atributos correlaciones no filtrados:&lt;/p&gt;
-&lt;table class="table-striped table-hover table"&gt;
+&lt;table class="table table-striped table-hover"&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;Modelo&lt;/th&gt;
@@ -2011,7 +2011,7 @@ h6:hover .anchor-link {
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -2149,7 +2149,7 @@ h6:hover .anchor-link {
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -2795,7 +2795,7 @@ salvarte que si fueras de alguna otra clase.&lt;/p&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -2939,7 +2939,7 @@ salvarte que si fueras de alguna otra clase.&lt;/p&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -3237,7 +3237,7 @@ salvarte que si fueras de alguna otra clase.&lt;/p&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -3813,7 +3813,7 @@ salvarte que si fueras de alguna otra clase.&lt;/p&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -5595,7 +5595,7 @@ h6:hover .anchor-link {
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -5784,7 +5784,7 @@ h6:hover .anchor-link {
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -6252,7 +6252,7 @@ memory usage: 912.0+ KB
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -6511,7 +6511,7 @@ memory usage: 912.0+ KB
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -6861,7 +6861,7 @@ dtype: float64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -6929,7 +6929,7 @@ dtype: float64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -7153,7 +7153,7 @@ dtype: float64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -8253,7 +8253,7 @@ YearBuilt................  3.4879e-02
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -9633,7 +9633,7 @@ Y  0.2  1.0&lt;/code&gt;&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -9882,7 +9882,7 @@ dtype: int64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -10023,7 +10023,7 @@ dtype: int64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -10164,7 +10164,7 @@ dtype: int64&lt;/pre&gt;
         text-align: right;
     }
 &lt;/style&gt;
-&lt;table border="1" class="dataframe table-striped table-hover table"&gt;
+&lt;table border="1" class="table-striped table dataframe table-hover"&gt;
 &lt;thead&gt;
 &lt;tr style="text-align: right;"&gt;
 &lt;th&gt;&lt;/th&gt;
@@ -10493,7 +10493,7 @@ dtype: int64&lt;/pre&gt;
         }    #T_d40352a8_3b64_11e9_bfdd_8cdcd4451e70row7_col7 {
             background-color:  #b40426;
             color:  #f1f1f1;
-        }&lt;/style&gt;&lt;table class="table-striped table-hover table" id="T_d40352a8_3b64_11e9_bfdd_8cdcd4451e70"&gt;&lt;thead&gt; &lt;tr&gt; &lt;th class="blank level0"&gt;&lt;/th&gt; &lt;th class="col_heading level0 col0"&gt;mpg&lt;/th&gt; &lt;th class="col_heading level0 col1"&gt;cylinders&lt;/th&gt; &lt;th class="col_heading level0 col2"&gt;displacement&lt;/th&gt; &lt;th class="col_heading level0 col3"&gt;horsepower&lt;/th&gt; &lt;th class="col_heading level0 col4"&gt;weight&lt;/th&gt; &lt;th class="col_heading level0 col5"&gt;acceleration&lt;/th&gt; &lt;th class="col_heading level0 col6"&gt;model_year&lt;/th&gt; &lt;th class="col_heading level0 col7"&gt;origin&lt;/th&gt; &lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
+        }&lt;/style&gt;&lt;table class="table table-striped table-hover" id="T_d40352a8_3b64_11e9_bfdd_8cdcd4451e70"&gt;&lt;thead&gt; &lt;tr&gt; &lt;th class="blank level0"&gt;&lt;/th&gt; &lt;th class="col_heading level0 col0"&gt;mpg&lt;/th&gt; &lt;th class="col_heading level0 col1"&gt;cylinders&lt;/th&gt; &lt;th class="col_heading level0 col2"&gt;displacement&lt;/th&gt; &lt;th class="col_heading level0 col3"&gt;horsepower&lt;/th&gt; &lt;th class="col_heading level0 col4"&gt;weight&lt;/th&gt; &lt;th class="col_heading level0 col5"&gt;acceleration&lt;/th&gt; &lt;th class="col_heading level0 col6"&gt;model_year&lt;/th&gt; &lt;th class="col_heading level0 col7"&gt;origin&lt;/th&gt; &lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;
 &lt;tr&gt;
 &lt;th class="row_heading level0 row0" id="T_d40352a8_3b64_11e9_bfdd_8cdcd4451e70level0_row0"&gt;mpg&lt;/th&gt;
 &lt;td class="data row0 col0" id="T_d40352a8_3b64_11e9_bfdd_8cdcd4451e70row0_col0"&gt;1.0&lt;/td&gt;
