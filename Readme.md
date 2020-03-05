@@ -1,8 +1,6 @@
-﻿# INFORMATION TECHNOLOGY BLOG
+﻿# BLOG
 
 This blog contents post about serveral topics in IT, focusing on artificial intelligence, quantum computer and robotics.
-
-## Screenshots
 
 ## Getting Started
 
