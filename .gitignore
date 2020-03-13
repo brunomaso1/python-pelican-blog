@@ -103,6 +103,16 @@ venv.bak/
 # mypy
 .mypy_cache/
 
+# Visual Studio
+obj
+blog
+blog.pyproj.user
+blog.pyproj
+
+# Visual Studio enviroments
+desarrollo32
+desarrollo64
+
 # Pelican
 output/
 #themes/
