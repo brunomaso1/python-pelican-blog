@@ -1,6 +1,12 @@
-﻿# BLOG
+# BLOG
+![python](https://img.shields.io/badge/python-v3.0-brightgreen) ![pelican](https://img.shields.io/badge/pelican-v4.0-brightgreen) ![type](https://img.shields.io/badge/type-blog-blue) ![stability](https://img.shields.io/badge/stablility-deprecated-yellow) ![migration](https://img.shields.io/badge/migration-in--process-yellow)
+
+*This blog is migrating to medium*
 
 This blog contents post about serveral topics in IT, focusing on artificial intelligence, quantum computer and robotics.
+
+## Screenshots
+![screenshot](screenshots/screenshot.jpg)
 
 ## Getting Started
 
