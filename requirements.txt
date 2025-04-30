@@ -21,7 +21,7 @@ feedgenerator==1.9
 ghp-import==0.5.5
 graphviz==0.10.1
 html5lib==1.0.1
-idna==2.8
+idna==3.7
 ipykernel==5.1.0
 ipython==8.10.0
 ipython-genutils==0.2.0
